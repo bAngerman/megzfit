@@ -23,4 +23,9 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
 	}
 } // endif function_exists( 'understrap_scripts' ).
 
+function filter_ptags_on_images($content){
+	return preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '\1', $content);
+}
+add_filter('the_content', 'filter_ptags_on_images');
+
 add_action( 'wp_enqueue_scripts', 'understrap_scripts' );

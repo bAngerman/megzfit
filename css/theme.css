@@ -5340,7 +5340,7 @@ button.bg-dark:hover {
 .d-table-cell {
   display: table-cell !important; }
 
-.d-flex {
+.d-flex, .d-flex-c {
   display: flex !important; }
 
 .d-inline-flex {
@@ -9555,33 +9555,68 @@ a.skip-link {
     MegzFit Theme custom styles
 */
 /*! VARIABLES */
+.d-flex-c {
+  flex-direction: column; }
+
+.bg-cover, .home .banner {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
 /*! GLOBAL STYLES */
 html {
   font-size: 16px; }
+  html p {
+    font-size: 1rem; }
 
 body h1, body h2, body h3, body h4, body h5, body h6 {
-  font-family: "Barlow Condensed", Helvetica, sans-serif; }
+  font-family: "Barlow Condensed", Helvetica, sans-serif;
+  font-weight: 500; }
+
+body h1 {
+  font-size: 1.8rem; }
+
+body h2 {
+  font-size: 1.6rem;
+  font-weight: 300; }
+
+body h3 {
+  font-size: 1.4rem; }
+
+body .wrapper {
+  padding: 0; }
+
+body p {
+  font-family: "Barlow Condensed", Helvetica, sans-serif;
+  font-weight: 300; }
 
 /*! CUSTOM STYLES */
 .home .banner {
   color: #fff;
   height: 300px;
   background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg");
-  background-size: cover;
-  background-position: center;
+  background-position: center bottom;
   text-align: center; }
-  .home .banner .banner-inner {
-    flex-direction: column; }
   .home .banner .logo {
-    height: 150px;
-    width: 240px;
+    height: 130px;
+    width: 203px;
     background-image: url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/logo3-white.png");
-    background-size: cover; }
+    background-size: contain; }
   .home .banner h1 {
+    text-transform: uppercase; }
+
+.home #about-me {
+  padding: 1rem 0;
+  background-color: #000; }
+  .home #about-me img {
+    padding: 1rem 0; }
+  .home #about-me h2 {
     text-transform: uppercase;
-    font-family: "Barlow Condensed", Helvetica, sans-serif;
-    font-weight: 300;
-    font-size: 2rem; }
+    color: #76cfbf;
+    letter-spacing: 1px; }
+  .home #about-me p {
+    color: #efefef; }
 
 /*
 * Use existing Bootstrap 4 classes and

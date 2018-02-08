@@ -11,19 +11,22 @@ $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
 <div class="banner d-flex d-center">
-	<div class="banner-inner d-flex d-center flex-wrap">
+	<div class="banner-inner d-flex-c d-center flex-wrap">
 		<div class="logo"></div>
 		<h1>megzfit personal trainer</h1>
 	</div>
 </div>
 <div class="wrapper" id="page-wrapper">
 	<div id="about-me">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<div class="row">
-				<main class="site-main" id="main">
-					<h4>About Me</h4>
-				</main><!-- #main -->
-			</div><!-- .row -->
+    <div class="<?php echo esc_attr( $container ); ?> d-flex-c d-center">
+      <?php
+        $aboutMe = new WP_Query( array('title' => 'about me') );
+        //print_r($aboutMe);
+        if ($aboutMe->have_posts()) : 
+          $aboutMe->the_post(); ?>
+          <h2><?php the_title(); ?></h2>
+          <?php the_content(); ?>
+        <?php endif; ?>
 		</div><!-- Container end -->
 	</div>
 	
