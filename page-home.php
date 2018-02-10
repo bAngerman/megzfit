@@ -20,7 +20,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<div id="about-me">
     <div class="<?php echo esc_attr( $container ); ?> d-flex-c d-center">
       <?php
-        $aboutMe = new WP_Query( array('title' => 'about me') );
+        $aboutMe = new WP_Query( array('post' => '22') );
         //print_r($aboutMe);
         if ($aboutMe->have_posts()) : 
           $aboutMe->the_post(); ?>
@@ -29,8 +29,28 @@ $container = get_theme_mod( 'understrap_container_type' );
         <?php endif; ?>
 		</div><!-- Container end -->
 	</div>
-	
-
+	<div id="ig">
+    <?php echo do_shortcode("[instagram-feed]"); ?>
+  </div>
+  <div id="blog">
+    <div class="<?php echo esc_attr( $container ); ?> d-flex-c d-center">
+      <?php
+      $args = array(
+        'category_name' => 'blog',
+        'posts_per_page' => '4'
+      );
+      $blogPosts = new WP_Query( $args );
+      if ($blogPosts->have_posts()) :
+        while($blogPosts->have_posts()) :
+          $blogPosts->the_post(); ?>
+          <div>
+            <h2><?php the_title(); ?></h2>
+            <?php the_content(); ?>
+          </div>
+        <?php endwhile; ?>
+      <?php endif; ?>
+    </div>
+  </div>
 </div><!-- Wrapper end -->
 
 <?php get_footer(); ?>

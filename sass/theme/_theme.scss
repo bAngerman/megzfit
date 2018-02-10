@@ -79,7 +79,9 @@ body {
     @extend .bg-cover;
     background-position: center bottom;
     text-align: center;
-
+    .banner-inner {
+      padding: 1rem;
+    }
     .logo {
       height: 130px;
       width: 203px;
@@ -103,6 +105,7 @@ body {
     }
     p {
       color: $light-grey;
+      text-align: center;
     }
   }
 }

@@ -9598,6 +9598,8 @@ body p {
   background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg");
   background-position: center bottom;
   text-align: center; }
+  .home .banner .banner-inner {
+    padding: 1rem; }
   .home .banner .logo {
     height: 130px;
     width: 203px;
@@ -9616,7 +9618,8 @@ body p {
     color: #76cfbf;
     letter-spacing: 1px; }
   .home #about-me p {
-    color: #efefef; }
+    color: #efefef;
+    text-align: center; }
 
 /*
 * Use existing Bootstrap 4 classes and
