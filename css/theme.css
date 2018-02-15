@@ -5509,7 +5509,7 @@ button.bg-dark:hover {
 .justify-content-end {
   justify-content: flex-end !important; }
 
-.justify-content-center {
+.justify-content-center, .d-center {
   justify-content: center !important; }
 
 .justify-content-between {
@@ -5524,7 +5524,7 @@ button.bg-dark:hover {
 .align-items-end {
   align-items: flex-end !important; }
 
-.align-items-center {
+.align-items-center, .d-center {
   align-items: center !important; }
 
 .align-items-baseline {
@@ -9550,6 +9550,34 @@ a.skip-link {
 
 .gallery-caption {
   display: block; }
+
+/*!
+    MegzFit Theme custom styles
+*/
+html {
+  font-size: 16px; }
+
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  font-family: "Barlow Condensed", Helvetica, sans-serif; }
+
+.home .banner {
+  color: #fff;
+  height: 300px;
+  background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg");
+  background-size: cover;
+  background-position: center; }
+  .home .banner .banner-inner {
+    flex-direction: column; }
+  .home .banner .logo {
+    height: 150px;
+    width: 240px;
+    background-image: url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/logo3-white.png");
+    background-size: cover; }
+  .home .banner h1 {
+    text-transform: uppercase;
+    font-family: "Barlow Condensed", Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 2rem; }
 
 /*
 * Use existing Bootstrap 4 classes and
