@@ -2,7 +2,8 @@
     MegzFit Theme custom styles
 */
 
-/*! VARIABLES */
+// variables
+
 // colors
 $white: #fff;
 $light-grey: #efefef;
@@ -22,56 +23,25 @@ $medium: 500;
 
 // extends
 .d-center { //center content horizontally and vertically
-    @extend .justify-content-center;
-    @extend .align-items-center;
+	@extend .justify-content-center;
+	@extend .align-items-center;
 }
 
-.d-flex-c {
-  @extend .d-flex;
-  flex-direction: column;
-}
-
-.bg-cover {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-/*! GLOBAL STYLES */
 html {
-  font-size: 16px;
-  p {
-    font-size: 1rem;
-  }
-}
-body {
-  h1,h2,h3,h4,h5,h6 {
-    font-family: $barlow;
-    font-weight: $medium;
-  }
-  h1 {
-    font-size: 1.8rem;
-  }
-  h2 {
-    font-size: 1.6rem;
-    font-weight: $light;
-  }
-  h3 {
-    font-size: 1.4rem;
-  }
-  .wrapper {
-    padding: 0;
-  }
-  p {
-    font-family: $barlow;
-    font-weight: $light;
-  }
+	font-size: 16px;
 }
 
-/*! CUSTOM STYLES */
-// home page
+// global styles
+body {
+
+	h1,h2,h3,h4,h5,h6 {
+		font-family: $barlow;
+	}
+}
+
+// Home page specific styles
 .home {
+<<<<<<< HEAD
   .banner {
     color: $white;
     height: 300px;
@@ -187,3 +157,28 @@ body {
     }
   }
 }
+=======
+	.banner {
+		.banner-inner {
+			flex-direction: column;
+		}
+		color: $white;
+		height: 300px;
+		background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg");
+		background-size: cover;
+		background-position: center;
+		.logo {
+			height: 150px;
+			width: 240px;
+			background-image: url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/logo3-white.png");
+			background-size: cover;
+		}
+		h1 {
+			text-transform: uppercase;
+			font-family: $barlow;
+			font-weight: $medium;
+			font-size: 2rem;
+		}
+	}
+}
+>>>>>>> fb8d68bb8c1af779bca88386b58a5690fb28eaba
