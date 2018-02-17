@@ -44,6 +44,11 @@
   input[type=submit] {
     @extend .btn;
     @extend .btn-outline-primary;
+    border-color: transparent;
+  }
+
+  input[type=submit]:hover {
+    border-color: transparent;
   }
 
   .wpcf7-form {

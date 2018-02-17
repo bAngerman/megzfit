@@ -9612,7 +9612,9 @@ body p {
   padding: 1rem 0;
   background-color: #000; }
   .home #about-me img {
-    padding: 1rem 0; }
+    padding: 1rem 0;
+    border: 1px solid transparent;
+    border-radius: 100%; }
   .home #about-me h2 {
     text-transform: uppercase;
     color: #76cfbf;
@@ -9620,6 +9622,60 @@ body p {
   .home #about-me p {
     color: #efefef;
     text-align: center; }
+
+.home #blog {
+  padding: 1rem 0;
+  background-color: #dbdddc; }
+  .home #blog .blog-title {
+    text-align: center;
+    text-transform: uppercase; }
+  .home #blog .blog-post .post-content {
+    background-color: #76cfbf;
+    padding: 1rem; }
+    .home #blog .blog-post .post-content h3 {
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 300; }
+    .home #blog .blog-post .post-content p {
+      color: #000;
+      margin: 0; }
+    .home #blog .blog-post .post-content .read-more-link {
+      display: block;
+      max-width: 90px;
+      margin: 1rem 0 0 auto;
+      background-color: #fff;
+      border-radius: 0;
+      color: #000; }
+
+.home #contact {
+  background-color: #000;
+  color: #76cfbf;
+  padding: 1rem 0; }
+  .home #contact h2 {
+    text-transform: uppercase; }
+  .home #contact div.wpcf7 .ajax-loader {
+    width: 16px;
+    height: 11px; }
+  .home #contact .wpcf7 {
+    max-width: 400px !important;
+    width: 100%; }
+  .home #contact div.wpcf7-response-output {
+    margin: 0;
+    font-family: "Barlow Condensed", Helvetica, sans-serif; }
+  .home #contact .form-group, .home #contact .wpcf7 .wpcf7-form p, .wpcf7 .wpcf7-form .home #contact p, .home #contact .wpcf7 .wpcf7-form p {
+    margin-bottom: 0.5rem;
+    width: 100%; }
+  .home #contact .wpcf7-submit {
+    max-width: 90px;
+    border-radius: 0;
+    background-color: #76cfbf;
+    text-transform: uppercase;
+    color: #000; }
+  .home #contact .wpcf7-submit:hover {
+    background-color: #76cfbf;
+    color: #000; }
+  .home #contact .wpcf7-mail-sent-ok {
+    border: 1px solid #76cfbf; }
 
 /*
 * Use existing Bootstrap 4 classes and
@@ -9637,6 +9693,10 @@ body p {
 .wpcf7 {
   max-width: 600px;
   margin: 0 auto !important; }
+  .wpcf7 input[type=submit] {
+    border-color: transparent; }
+  .wpcf7 input[type=submit]:hover {
+    border-color: transparent; }
   .wpcf7 .wpcf7-form label {
     width: 100%; }
   .wpcf7 .wpcf7-not-valid-tip {
