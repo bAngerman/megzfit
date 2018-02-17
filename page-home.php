@@ -11,14 +11,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
 <div class="banner d-flex d-center">
-	<div class="banner-inner d-flex d-center flex-wrap">
+	<div class="banner-inner d-flex-c d-center flex-wrap">
 		<div class="logo"></div>
 		<h1>megzfit personal trainer</h1>
 	</div>
 </div>
 <div class="wrapper" id="page-wrapper">
 	<div id="about-me">
-<<<<<<< HEAD
     <div class="<?php echo esc_attr( $container ); ?> d-flex-c d-center">
       <?php
         $aboutMe = new WP_Query( array('p'=>'22') );
@@ -72,18 +71,6 @@ $container = get_theme_mod( 'understrap_container_type' );
       <?php echo do_shortcode("[contact-form-7 id=\"60\" title=\"Contact Me\"]"); ?>
     </div>
   </div>
-=======
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<div class="row">
-				<main class="site-main" id="main">
-					<h4>About Me</h4>
-				</main><!-- #main -->
-			</div><!-- .row -->
-		</div><!-- Container end -->
-	</div>
-	
-
->>>>>>> fb8d68bb8c1af779bca88386b58a5690fb28eaba
 </div><!-- Wrapper end -->
 
 <?php get_footer(); ?>
