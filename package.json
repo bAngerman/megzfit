@@ -1,6 +1,6 @@
 {
-  "name": "understrap",
-  "version": "0.7.0",
+  "name": "MegzFit Theme",
+  "version": "1.0",
   "description": "WordPress Theme framework",
   "main": "index.js",
   "scripts": {
@@ -9,10 +9,6 @@
   "engines": {
     "npm": ">=2.1.8"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/holger1411/understrap.git"
-  },
   "keywords": [
     "wordpress",
     "theme",
@@ -20,12 +16,8 @@
     "bootstrap",
     "underscores"
   ],
-  "author": "Holger Koenemann",
-  "license": "GPL-2.0",
-  "bugs": {
-    "url": "https://github.com/holger1411/understrap/issues"
-  },
-  "homepage": "https://understrap.com",
+  "author": "",
+  "license": "",
   "dependencies": {
     "bootstrap": "4.0.0-beta.3",
     "browser-sync": "^2.22.0",
