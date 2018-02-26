@@ -10,6 +10,7 @@ $mid-grey: #dbdddc;
 $teal: #76cfbf;
 $dark-grey: #7c7c7c;
 $black: #000;
+$carl: #ff7f50;
 
 // fonts
 $barlow: "Barlow Condensed", Helvetica, sans-serif;
@@ -19,6 +20,11 @@ $meddon: Meddon, cursive;
 $regular: 400;
 $light: 300;
 $medium: 500;
+
+// transition timings 
+$t-slow: 500ms;
+$t-medium: 300ms;
+$t-fast: 100ms;
 
 // extends
 .d-center { //center content horizontally and vertically
@@ -38,11 +44,20 @@ $medium: 500;
   background-size: cover;
 }
 
+// mixins 
+@mixin transition($timing) {
+  -webkit-transition: $timing all linear;
+  -moz-transition: $timing all linear;
+  -o-transition: $timing all linear;
+  transition: $timing all linear;
+}
+
 /*! GLOBAL STYLES */
 html {
   font-size: 16px;
   p {
     font-size: 1rem;
+    font-weight: $regular;
   }
 }
 body {
@@ -55,7 +70,6 @@ body {
   }
   h2 {
     font-size: 1.6rem;
-    font-weight: $light;
   }
   h3 {
     font-size: 1.4rem;
@@ -66,6 +80,90 @@ body {
   p {
     font-family: $barlow;
     font-weight: $light;
+  }
+  a {
+    @include transition($t-fast);
+  }
+  a:hover {
+    @include transition($t-fast);
+  }
+  .wpcf7 label, .wpcf7 .wpcf7-submit {
+    font-weight: $medium;
+  }
+  .wpfc7 .wpcf7-not-valid-tip {
+    color: $carl;
+  }
+  .wpcf7 .wpcf7-validation-errors {
+    background-color: transparent;
+    border-radius: 0;
+    color: $carl;
+    border-color: transparent;
+  }
+}
+/*! GLOBAL HEADER */
+#wrapper-header {
+
+}
+
+/*! GLOBAL FOOTER */
+#wrapper-footer {
+  background-color: $teal;
+  padding: 1rem 0 2rem 0;
+  .mail-list {
+    h1 {
+      text-transform: uppercase;
+      color: $black;
+      text-align: center;
+    }
+    div.wpcf7 .ajax-loader {
+      width: 16px;
+      height: 11px;
+    }
+    .wpcf7 {
+      max-width: 400px !important;
+      width: 100%;
+    }
+    div.wpcf7-response-output {
+      margin: 0;
+      font-family: $barlow;
+    }
+    .form-group, .wpcf7 .wpcf7-form p {
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
+    .wpcf7-submit {
+      max-width: 90px;
+      border-radius: 0;
+      background-color: $black;
+      text-transform: uppercase;
+      color: $white;
+    }
+    .wpcf7-submit:hover {
+      background-color: $black;
+      color: $white;
+    }
+    .wpcf7-mail-sent-ok {
+      border: 1px solid $black;
+    }
+  }
+  .social {
+    margin: 1rem auto;
+    a {
+      color: $black;
+    }
+    a:hover {
+      color: $white;
+    }
+    i {
+      padding: 0 1rem;
+    }
+  }
+  .copy {
+    text-align: center;
+    text-transform: uppercase;
+    p {
+      margin: 0;
+    }
   }
 }
 
@@ -90,6 +188,7 @@ body {
     }
     h1 {
       text-transform: uppercase;
+      font-weight: $light;
     }
   }
   #about-me {
