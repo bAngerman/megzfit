@@ -29,4 +29,18 @@ function filter_ptags_on_images($content){
 }
 add_filter('the_content', 'filter_ptags_on_images');
 
+// Prevent email sends on email subscription form
+function wpcf7_do_something_else($cf7) {
+    $wpcf = WPCF7_ContactForm::get_current();
+
+    // if you wanna check the ID of the Form $wpcf->id
+
+    if ($wpcf->id == '61') {
+        $wpcf->skip_mail = true;    
+	}
+    return $wpcf;
+}
+
+add_action("wpcf7_before_send_mail", "wpcf7_do_something_else");  
+
 add_action( 'wp_enqueue_scripts', 'understrap_scripts' );
