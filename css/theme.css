@@ -7276,13 +7276,19 @@ body a:hover {
 body .wpcf7 label, body .wpcf7 .wpcf7-submit {
   font-weight: 500; }
 
-body .wpfc7 .wpcf7-not-valid-tip {
+body #contact .wpcf7-not-valid-tip, body #wrapper-footer .wpcf7-not-valid-tip {
   color: #ff7f50; }
 
 body .wpcf7 .wpcf7-validation-errors {
   background-color: transparent;
   border-radius: 0;
   color: #ff7f50;
+  border-color: #ff7f50; }
+
+body .wpcf7 .wpcf7-not-valid {
+  border-color: #ff7f50; }
+
+body #wrapper-footer .wpcf7 .wpcf7-validation-errors {
   border-color: transparent; }
 
 /*! GLOBAL HEADER */
@@ -7363,6 +7369,9 @@ body .wpcf7 .wpcf7-validation-errors {
   .home #about-me p {
     color: #efefef;
     text-align: center; }
+
+.home #ig {
+  background-color: #dbdddc; }
 
 .home #blog {
   padding: 1rem 0;

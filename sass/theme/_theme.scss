@@ -90,13 +90,19 @@ body {
   .wpcf7 label, .wpcf7 .wpcf7-submit {
     font-weight: $medium;
   }
-  .wpfc7 .wpcf7-not-valid-tip {
+  #contact .wpcf7-not-valid-tip, #wrapper-footer .wpcf7-not-valid-tip {
     color: $carl;
   }
   .wpcf7 .wpcf7-validation-errors {
     background-color: transparent;
     border-radius: 0;
     color: $carl;
+    border-color: $carl;
+  }
+  .wpcf7 .wpcf7-not-valid {
+    border-color: $carl;
+  }
+  #wrapper-footer .wpcf7 .wpcf7-validation-errors {
     border-color: transparent;
   }
 }
@@ -208,6 +214,9 @@ body {
       color: $light-grey;
       text-align: center;
     }
+  }
+  #ig {
+    background-color: $mid-grey;
   }
   #blog {
     padding: 1rem 0;
