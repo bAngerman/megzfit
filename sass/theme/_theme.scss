@@ -12,6 +12,10 @@ $dark-grey: #7c7c7c;
 $black: #000;
 $carl: #ff7f50;
 
+// logo proportion
+$logoWtoH: 1.5615384615px;
+// this is the proportion of the logos width to height ( 203px / 130px = above val )
+
 // fonts
 $barlow: "Barlow Condensed", Helvetica, sans-serif;
 $meddon: Meddon, cursive;
@@ -20,6 +24,10 @@ $meddon: Meddon, cursive;
 $regular: 400;
 $light: 300;
 $medium: 500;
+
+// breakpoints
+$bp-tablet: 600px;
+$bp-desktop: 992px;
 
 // transition timings 
 $t-slow: 500ms;
@@ -87,23 +95,64 @@ body {
   a:hover {
     @include transition($t-fast);
   }
-  .wpcf7 label, .wpcf7 .wpcf7-submit {
+  #page label, #page submit {
     font-weight: $medium;
   }
-  #contact .wpcf7-not-valid-tip, #wrapper-footer .wpcf7-not-valid-tip {
+  #page .wpcf7-not-valid-tip, #page .mc4wp-error {
     color: $carl;
   }
-  .wpcf7 .wpcf7-validation-errors {
+  #page .mc4wp-error {
+    text-align: center;
+  }
+  #page .wpcf7-validation-errors {
     background-color: transparent;
     border-radius: 0;
     color: $carl;
     border-color: $carl;
   }
-  .wpcf7 .wpcf7-not-valid {
+  #page .wpcf7-not-valid {
     border-color: $carl;
   }
-  #wrapper-footer .wpcf7 .wpcf7-validation-errors {
+  #page .wpcf7 .wpcf7-validation-errors {
     border-color: transparent;
+  }
+  #page label {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  #page form {
+    max-width: 400px !important;
+    width: 100%;
+  }
+  .mc4wp-form [type=email] {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  #page *[type=submit] {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  .btn:not([disabled]):not(.disabled), .mc4wp-form input[type=submit]:not([disabled]):not(.disabled) {
+    cursor: pointer;
   }
 }
 /*! GLOBAL HEADER */
@@ -121,31 +170,27 @@ body {
       color: $black;
       text-align: center;
     }
-    div.wpcf7 .ajax-loader {
-      width: 16px;
-      height: 11px;
-    }
-    .wpcf7 {
+    .input {
       max-width: 400px !important;
       width: 100%;
     }
-    div.wpcf7-response-output {
+    .mc4wp-error {
       margin: 0;
       font-family: $barlow;
     }
-    .form-group, .wpcf7 .wpcf7-form p {
+    .form-group, .wpcf7-form p, .mc4wp-form p {
       margin-bottom: 0.5rem;
       width: 100%;
     }
-    .wpcf7-submit {
+    *[type=submit] {
       max-width: 90px;
       border-radius: 0;
       background-color: $black;
       text-transform: uppercase;
       color: $white;
     }
-    .wpcf7-submit:hover {
-      background-color: $black;
+    *[type=submit]:hover {
+      background-color: lighten($black, 10%);
       color: $white;
     }
     .wpcf7-mail-sent-ok {
@@ -179,6 +224,7 @@ body {
   .banner {
     color: $white;
     height: 300px;
+    @include transition($t-fast);
     background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg");
     @extend .bg-cover;
     background-position: center bottom;
@@ -187,9 +233,10 @@ body {
       padding: 1rem;
     }
     .logo {
-      height: 130px;
-      width: 203px;
-      background-image: url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/logo3-white.png");
+      height: 140px;
+      width: (140 * $logoWtoH);
+      @include transition($t-fast);
+      background-image: url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/Asset-10.svg");
       background-size: contain;
     }
     h1 {
@@ -216,7 +263,10 @@ body {
     }
   }
   #ig {
-    background-color: $mid-grey;
+    background-color: $teal;
+    .sbi_follow_btn {
+      padding-bottom: 0.5rem;
+    }
   }
   #blog {
     padding: 1rem 0;
@@ -249,6 +299,9 @@ body {
           background-color: $white;
           border-radius: 0;
           color: $black;
+        }
+        .read-more-link:hover {
+          background-color: lighten($teal, 30%);
         }
       } 
     }
@@ -289,9 +342,58 @@ body {
     .wpcf7-submit:hover {
       background-color: $teal;
       color: $black;
+      background-color: lighten($teal, 10%);
     }
     .wpcf7-mail-sent-ok {
       border: 1px solid $teal;
+    }
+  }
+}
+
+/*! TABLET */
+@media only screen and (min-width: $bp-tablet) {
+  .home {
+    h1 {
+      font-size: 2.0rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1.1rem;
+    }
+    .banner {
+      height: 400px;
+      background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png");
+      .logo {
+        height: 160px;
+        width: (160 * $logoWtoH);
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+/*! DESKTOP */
+@media only screen and (min-width: $bp-desktop) {
+  .home {
+    h1 {
+      font-size: 2.2rem;
+    }
+    h2 {
+      font-size: 2.0rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    .banner {
+      .logo {
+        padding-bottom: 1rem;
+        height: 180px;
+        width: (180 * $logoWtoH);
+      }
+      height: 500px;
+      background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png");
     }
   }
 }

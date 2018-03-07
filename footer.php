@@ -14,9 +14,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="wrapper" id="wrapper-footer">
 
 	<div class="<?php echo esc_attr( $container ); ?>">
-		<div class="mail-list d-flex-c">
-			<h1>join the mailing list</h1>
-			<?php echo do_shortcode("[contact-form-7 id=\"61\" title=\"Mail List\"]"); ?>
+		<div class="mail-list">
+			<div class="<?php echo esc_attr( $container ); ?> d-flex-c d-center">
+				<h1>join the mailing list</h1>
+				<?php echo do_shortcode("[mc4wp_form id=\"98\"]"); ?>
+			</div>
 		</div>
 		<div class="social d-flex d-center">
 			<a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
