@@ -17,7 +17,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="mail-list">
 			<div class="<?php echo esc_attr( $container ); ?> d-flex-c d-center">
 				<h1>join the mailing list</h1>
-				<?php echo do_shortcode("[mc4wp_form id=\"98\"]"); ?>
+				<?php echo do_shortcode("[contact-form-7 id=\"61\" title=\"Mail List\"]"); ?>
 			</div>
 		</div>
 		<div class="social d-flex d-center">

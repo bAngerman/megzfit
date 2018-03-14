@@ -7225,6 +7225,22 @@ a.skip-link {
     MegzFit Theme custom styles
 */
 /*! VARIABLES */
+#page .d-flex, #page .d-flex-c {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  -ms-flex: 0 1 auto;
+  -webkit-flex: 0 1 auto;
+  flex: 0 1 auto;
+  min-height: 100%; }
+
 .d-flex-c {
   flex-direction: column; }
 
@@ -7235,8 +7251,12 @@ a.skip-link {
   background-size: cover; }
 
 /*! GLOBAL STYLES */
+html, body {
+  height: 100%; }
+
 html {
-  font-size: 16px; }
+  font-size: 16px;
+  background-color: #76cfbf; }
   html p {
     font-size: 1rem;
     font-weight: 400; }
@@ -7328,6 +7348,10 @@ body #page *[type=submit] {
   line-height: 1.5;
   border-radius: .25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
+
+body div.wpcf7-response-output {
+  margin: 0;
+  font-family: "Barlow Condensed", Helvetica, sans-serif; }
 
 body .btn:not([disabled]):not(.disabled), body .wpcf7 input[type=submit]:not([disabled]):not(.disabled), .wpcf7 body input[type=submit]:not([disabled]):not(.disabled), body .mc4wp-form input[type=submit]:not([disabled]):not(.disabled) {
   cursor: pointer; }
@@ -7459,9 +7483,6 @@ body .btn:not([disabled]):not(.disabled), body .wpcf7 input[type=submit]:not([di
   .home #contact .wpcf7 {
     max-width: 400px !important;
     width: 100%; }
-  .home #contact div.wpcf7-response-output {
-    margin: 0;
-    font-family: "Barlow Condensed", Helvetica, sans-serif; }
   .home #contact .form-group, .home #contact .wpcf7 .wpcf7-form p, .wpcf7 .wpcf7-form .home #contact p, .home #contact .wpcf7 .wpcf7-form p {
     margin-bottom: 0.5rem;
     width: 100%; }

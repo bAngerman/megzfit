@@ -40,6 +40,20 @@ $t-fast: 100ms;
     @extend .align-items-center;
 }
 
+#page {
+  .d-flex {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    -ms-flex: 0 1 auto; // ie fix
+    -webkit-flex: 0 1 auto; // ie fix
+    flex: 0 1 auto; // ie fix
+    min-height: 100%; // ie fix
+  }
+}
+
 .d-flex-c {
   @extend .d-flex;
   flex-direction: column;
@@ -61,8 +75,12 @@ $t-fast: 100ms;
 }
 
 /*! GLOBAL STYLES */
+html, body {
+  height: 100%;
+}
 html {
   font-size: 16px;
+  background-color: $teal;
   p {
     font-size: 1rem;
     font-weight: $regular;
@@ -150,6 +168,10 @@ body {
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  div.wpcf7-response-output {
+    margin: 0;
+    font-family: $barlow;
   }
   .btn:not([disabled]):not(.disabled), .mc4wp-form input[type=submit]:not([disabled]):not(.disabled) {
     cursor: pointer;
@@ -323,10 +345,6 @@ body {
     .wpcf7 {
       max-width: 400px !important;
       width: 100%;
-    }
-    div.wpcf7-response-output {
-      margin: 0;
-      font-family: $barlow;
     }
     .form-group, .wpcf7 .wpcf7-form p {
       margin-bottom: 0.5rem;
