@@ -35,27 +35,30 @@ $t-medium: 300ms;
 $t-fast: 100ms;
 
 // extends
-.d-center { //center content horizontally and vertically
-    @extend .justify-content-center;
-    @extend .align-items-center;
+.d-flex {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  -ms-flex: 0 1 auto; // ie fix
+  -webkit-flex: 0 1 auto; // ie fix
+  flex: 0 1 auto; // ie fix
+  min-height: 100%; // ie fix
 }
 
+.d-center { //center content horizontally and vertically
+  @extend .d-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 #page {
-  .d-flex {
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox;      /* TWEENER - IE 10 */
-    display: -webkit-flex;     /* NEW - Chrome */
-    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-    -ms-flex: 0 1 auto; // ie fix
-    -webkit-flex: 0 1 auto; // ie fix
-    flex: 0 1 auto; // ie fix
-    min-height: 100%; // ie fix
-  }
+  
 }
 
 .d-flex-c {
-  @extend .d-flex;
   flex-direction: column;
 }
 
@@ -113,305 +116,31 @@ body {
   a:hover {
     @include transition($t-fast);
   }
-  #page label, #page submit {
-    font-weight: $medium;
-  }
-  #page .wpcf7-not-valid-tip, #page .mc4wp-error {
-    color: $carl;
-  }
-  #page .mc4wp-error {
-    text-align: center;
-  }
-  #page .wpcf7-validation-errors {
-    background-color: transparent;
-    border-radius: 0;
-    color: $carl;
-    border-color: $carl;
-  }
-  #page .wpcf7-not-valid {
-    border-color: $carl;
-  }
-  #page .wpcf7 .wpcf7-validation-errors {
-    border-color: transparent;
-  }
-  #page label {
-    width: 100%;
-    margin-bottom: 0;
-  }
-  #page form {
-    max-width: 400px !important;
-    width: 100%;
-  }
-  .mc4wp-form [type=email] {
-    display: block;
-    width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  }
-  #page *[type=submit] {
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  }
-  div.wpcf7-response-output {
-    margin: 0;
-    font-family: $barlow;
-  }
-  .btn:not([disabled]):not(.disabled), .mc4wp-form input[type=submit]:not([disabled]):not(.disabled) {
-    cursor: pointer;
-  }
-}
-/*! GLOBAL HEADER */
-#wrapper-header {
-
 }
 
 /*! GLOBAL FOOTER */
 #wrapper-footer {
   background-color: $teal;
   padding: 1rem 0 2rem 0;
-  .mail-list {
-    h1 {
-      text-transform: uppercase;
-      color: $black;
-      text-align: center;
-    }
-    .input {
-      max-width: 400px !important;
-      width: 100%;
-    }
-    .mc4wp-error {
-      margin: 0;
-      font-family: $barlow;
-    }
-    .form-group, .wpcf7-form p, .mc4wp-form p {
-      margin-bottom: 0.5rem;
-      width: 100%;
-    }
-    *[type=submit] {
-      max-width: 90px;
-      border-radius: 0;
-      background-color: $black;
-      text-transform: uppercase;
-      color: $white;
-    }
-    *[type=submit]:hover {
-      background-color: lighten($black, 10%);
-      color: $white;
-    }
-    .wpcf7-mail-sent-ok {
-      border: 1px solid $black;
-    }
-  }
-  .social {
-    margin: 1rem auto;
-    a {
-      color: $black;
-    }
-    a:hover {
-      color: $white;
-    }
-    i {
-      padding: 0 1rem;
-    }
-  }
-  .copy {
-    text-align: center;
-    text-transform: uppercase;
-    p {
-      margin: 0;
-    }
-  }
 }
 
 /*! CUSTOM STYLES */
 // home page
 .home {
-  .banner {
-    color: $white;
-    height: 300px;
-    @include transition($t-fast);
-    background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg");
-    @extend .bg-cover;
-    background-position: center bottom;
-    text-align: center;
-    .banner-inner {
-      padding: 1rem;
-    }
-    .logo {
-      height: 140px;
-      width: (140 * $logoWtoH);
-      @include transition($t-fast);
-      background-image: url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/Asset-10.svg");
-      background-size: contain;
-    }
-    h1 {
-      text-transform: uppercase;
-      font-weight: $light;
-    }
-  }
-  #about-me {
-    padding: 1rem 0;
-    background-color: $black;
-    img {
-      padding: 1rem 0;
-      border: 1px solid transparent;
-      border-radius: 100%;
-    }
-    h2 {
-      text-transform: uppercase;
-      color: $teal;
-      letter-spacing: 1px;
-    }
-    p {
-      color: $light-grey;
-      text-align: center;
-    }
-  }
-  #ig {
-    background-color: $teal;
-    .sbi_follow_btn {
-      padding-bottom: 0.5rem;
-    }
-  }
-  #blog {
-    padding: 1rem 0;
-    background-color: $mid-grey;
-    .blog-title {
-      text-align: center;
-      text-transform: uppercase;
-    }
-    .blog-post {
-      .post-image {
-        img {
-        }
-      }
-      .post-content {
-        background-color: $teal;
-        padding: 1rem;
-        h3 {
-          color: $white;
-          text-transform: uppercase;
-          font-weight: $light;
-        }
-        p {
-          color: $black;
-          margin: 0;
-        }
-        .read-more-link {
-          display: block;
-          max-width: 90px;
-          margin: 1rem 0 0 auto;
-          background-color: $white;
-          border-radius: 0;
-          color: $black;
-        }
-        .read-more-link:hover {
-          background-color: lighten($teal, 30%);
-        }
-      } 
-    }
-  }
   #vids {
-
   }
   #contact {
-    background-color: $black;
-    color: $teal;
-    padding: 1rem 0;
-    h2 {
-      text-transform: uppercase;
-    }
-    div.wpcf7 .ajax-loader {
-      width: 16px;
-      height: 11px;
-    }
-    .wpcf7 {
-      max-width: 400px !important;
-      width: 100%;
-    }
-    .form-group, .wpcf7 .wpcf7-form p {
-      margin-bottom: 0.5rem;
-      width: 100%;
-    }
-    .wpcf7-submit {
-      max-width: 90px;
-      border-radius: 0;
-      background-color: $teal;
-      text-transform: uppercase;
-      color: $black;
-    }
-    .wpcf7-submit:hover {
-      background-color: $teal;
-      color: $black;
-      background-color: lighten($teal, 10%);
-    }
-    .wpcf7-mail-sent-ok {
-      border: 1px solid $teal;
-    }
   }
 }
 
 /*! TABLET */
 @media only screen and (min-width: $bp-tablet) {
   .home {
-    h1 {
-      font-size: 2.0rem;
-    }
-    h2 {
-      font-size: 1.8rem;
-    }
-    p {
-      font-size: 1.1rem;
-    }
-    .banner {
-      height: 400px;
-      background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png");
-      .logo {
-        height: 160px;
-        width: (160 * $logoWtoH);
-        padding-bottom: 0.5rem;
-      }
-    }
   }
 }
 
 /*! DESKTOP */
 @media only screen and (min-width: $bp-desktop) {
   .home {
-    h1 {
-      font-size: 2.2rem;
-    }
-    h2 {
-      font-size: 2.0rem;
-    }
-    p {
-      font-size: 1.2rem;
-    }
-    .banner {
-      .logo {
-        padding-bottom: 1rem;
-        height: 180px;
-        width: (180 * $logoWtoH);
-      }
-      height: 500px;
-      background-image: linear-gradient(rgba(118, 207, 191, 0.64), rgba(118, 207, 191, 0.64)), url("http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png");
-    }
   }
 }

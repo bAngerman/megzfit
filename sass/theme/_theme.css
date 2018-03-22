@@ -1,0 +1,101 @@
+/*!
+    MegzFit Theme custom styles
+*/
+/*! VARIABLES */
+.d-flex, .d-center {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  -ms-flex: 0 1 auto;
+  -webkit-flex: 0 1 auto;
+  flex: 0 1 auto;
+  min-height: 100%;
+}
+
+.d-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.d-flex-c {
+  flex-direction: column;
+}
+
+.bg-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/*! GLOBAL STYLES */
+html, body {
+  height: 100%;
+}
+
+html {
+  font-size: 16px;
+  background-color: #76cfbf;
+}
+
+html p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  font-family: "Barlow Condensed", Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+body h1 {
+  font-size: 1.8rem;
+}
+
+body h2 {
+  font-size: 1.6rem;
+}
+
+body h3 {
+  font-size: 1.4rem;
+}
+
+body .wrapper {
+  padding: 0;
+}
+
+body p {
+  font-family: "Barlow Condensed", Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+body a {
+  -webkit-transition: 100ms all linear;
+  -moz-transition: 100ms all linear;
+  -o-transition: 100ms all linear;
+  transition: 100ms all linear;
+}
+
+body a:hover {
+  -webkit-transition: 100ms all linear;
+  -moz-transition: 100ms all linear;
+  -o-transition: 100ms all linear;
+  transition: 100ms all linear;
+}
+
+/*! GLOBAL FOOTER */
+#wrapper-footer {
+  background-color: #76cfbf;
+  padding: 1rem 0 2rem 0;
+}
+
+/*! CUSTOM STYLES */
+/*! TABLET */
+/*! DESKTOP */
