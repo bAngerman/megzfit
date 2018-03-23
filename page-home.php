@@ -7,46 +7,50 @@ get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<div class="banner d-flex d-center">
-	<div class="banner-inner d-flex-c d-center flex-wrap">
-		<div class="logo"></div>
+<div class="banner">
+	<div class="banner-inner">
+		<div class="logo"><img src="http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/Asset-10.svg" alt="Logo"></div>
 		<h1>megzfit personal trainer</h1>
 	</div>
 </div>
-<div class="wrapper" id="page-wrapper">
-	<div id="about-me">
-    <div class="<?php echo esc_attr( $container ); ?> d-flex-c d-center col-12 col-md-6">
-      <?php
-        $aboutMe = new WP_Query( array('p'=>'22') );
-        //print_r($aboutMe);
+<div class="about-me">
+  <div class="about-me-inner <?php echo esc_attr( $container ); ?>">
+    <div class="row">
+      <div class="col-12 col-md-8 mx-auto">
+        <?php
+          $aboutMe = new WP_Query( array('p'=>'22') );
         if ($aboutMe->have_posts()) : 
           $aboutMe->the_post(); ?>
           <h2><?php the_title(); ?></h2>
           <?php the_content(); ?>
         <?php endif; ?>
-		</div><!-- Container end -->
+        </div>
+      </div>
+    </div>
 	</div>
-	<div id="ig">
+	<div class="ig">
     <?php echo do_shortcode("[instagram-feed]"); ?>
   </div>
-  <div id="blog">
+  <div class="blog">
     <div class="<?php echo esc_attr( $container ); ?>">
       <div class="blog-title">
         <h2>blog</h2>
       </div>
-      <div class="d-flex-c d-center">
+      <div class="blog-inner">
         <?php
         $args = array(
           'category_name' => 'blog',
-          'posts_per_page' => '2'
+          'posts_per_page' => '2',
+          'orderby'			=> 'date',
+          'order' => 'DESC',
+          'posts_type'		=> 'post',
+          'post_status'		=> 'publish'
         );
         $blogPosts = new WP_Query( $args );
         if ($blogPosts->have_posts()) : ?>
           <div class="row">
-          <?php while($blogPosts->have_posts()) :
-            $blogPosts->the_post(); 
-            //print_r($blogPosts); ?>
-            <div class="blog-post d-flex-c col-12 col-md-6">
+          <?php while($blogPosts->have_posts()) : $blogPosts->the_post(); ?>
+            <div class="blog-post col-12 col-md-6">
               <?php if(has_post_thumbnail()): ?>
                 <div class="post-image">
                   <img src="<?php esc_url(the_post_thumbnail_url()); ?>" title="<?php the_title() . ' thumbnail image' ?>" class="image-fluid" alt="">
@@ -54,7 +58,7 @@ $container = get_theme_mod( 'understrap_container_type' );
               <?php endif; ?>
               <div class="post-content">
                 <h3><?php the_title(); ?></h3>
-                <?php the_excerpt(); ?>
+                <p><?php the_excerpt(); ?></p>
               </div>
             </div>
           <?php endwhile; ?>
@@ -63,9 +67,9 @@ $container = get_theme_mod( 'understrap_container_type' );
       </div>
     </div>
   </div>
-  <div id="vids"></div>
-  <div id="contact">
-    <div class="<?php echo esc_attr( $container ); ?> d-flex-c d-center">
+  <div class="vids"></div>
+  <div class="contact forms">
+    <div class="<?php echo esc_attr( $container ); ?> forms-inner">
       <h2>Contact Me</h2>
       <div>
       </div>

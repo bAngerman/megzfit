@@ -27,6 +27,7 @@ $medium: 500;
 
 // breakpoints
 $bp-tablet: 600px;
+$bootstrapTablet: 768px;
 $bp-desktop: 992px;
 
 // transition timings 
@@ -55,7 +56,7 @@ $t-fast: 100ms;
 
 
 #page {
-  
+  background-color: $teal;
 }
 
 .d-flex-c {
@@ -83,7 +84,6 @@ html, body {
 }
 html {
   font-size: 16px;
-  background-color: $teal;
   p {
     font-size: 1rem;
     font-weight: $regular;
@@ -103,9 +103,6 @@ body {
   h3 {
     font-size: 1.4rem;
   }
-  .wrapper {
-    padding: 0;
-  }
   p {
     font-family: $barlow;
     font-weight: $light;
@@ -119,28 +116,238 @@ body {
 }
 
 /*! GLOBAL FOOTER */
-#wrapper-footer {
+.footer {
   background-color: $teal;
-  padding: 1rem 0 2rem 0;
+  padding: 12px 0 18px 0;
+
+  .social {
+    margin: 0 auto;
+    max-width: 150px;
+    @extend .d-flex;
+    justify-content: space-between;
+    a {
+      color: $black;
+    }
+    a:hover, a:active {
+      color: $black;
+    }
+  }
+  .copy {
+    text-align: center;
+    font-family: $barlow;
+    padding-top: 12px;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    p {
+      margin-bottom: 0;
+    }
+  }
 }
 
 /*! CUSTOM STYLES */
 // home page
 .home {
-  #vids {
+  width: 100%;
+  .banner {
+    @extend .d-center;
+    min-height: 350px;
+    background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg);
+    background-size: cover;
+    background-position: center center;
+    color: $white;
+    font-family: $barlow;
+    
+    text-transform: uppercase;
+    .banner-inner {
+      h1 {
+        font-weight: $light;
+      }
+    }
   }
-  #contact {
+  .about-me {
+    background-color: $black;
+    color: $teal;
+    text-align: center;
+    padding: 12px 24px;
+
+    .about-me-inner {
+      h2 {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      img {
+        padding: 12px 0px;
+        border: 1px transparent;
+        border-radius: 50%;
+      }
+      p {
+        color: $white;
+      }
+    }
   }
+  .ig {
+    padding: 0 0 12px 0;
+  }
+  .blog {
+    padding: 12px 0 18px 0;
+    background-color: $mid-grey;
+    text-align: center;
+    .blog-title {
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+    }
+    .blog-inner {
+      .blog-post {
+        .post-content {
+          background-color: $teal;
+          position: relative;
+          padding: 6px 18px 36px 18px;
+          text-align: left;
+          h3 {
+            color: $white;
+            font-family: $barlow;
+            font-weight: $light;
+            text-transform: uppercase;
+          }
+          a {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background-color: $white;
+            color: $black; 
+            border-radius: 0;
+          }
+          a:hover {
+            color: $black;
+          }
+          a:focus {
+            box-shadow: none;
+          }
+        }
+      }
+      .blog-post:not(:first-child) { //suppress second blog post on mobile screen
+        display: none;
+      }
+    }
+  }
+  .vids {
+  }
+}
+
+.forms { // this is for both of the forms, theonly different is in some colors
+  text-align: center;
+  padding: 12px 18px;
+
+  .forms-inner {
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-family: $barlow;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    p {
+      margin: 0;
+      text-align: left;
+    }
+    label {
+      font-weight: $medium;
+    }
+    input, textarea, input {
+      border: 1px solid transparent;
+      border-radius: 0;
+    }
+    input:focus, textarea:focus, input:focus {
+      box-shadow: none;
+      border: 1px solid transparent;
+    }
+    textarea {
+      max-height: 8rem;
+    }
+  }
+  // both forms share these styles
+  &.contact, &.mail-list {
+    input[type=submit] {
+      text-transform: uppercase;
+      &:not([disabled]):not(.disabled):active {
+        border-color: transparent;
+        box-shadow: none;
+      }
+    }
+    .ajax-loader {
+      height: 11px;
+    }
+    .wpcf7-not-valid-tip {
+      color: $carl;
+    }
+    .wpcf7-not-valid {
+      border-color: $carl;
+    }
+  }
+  // contact form specific
+  &.contact { 
+    background-color: $black;
+    color: $teal;
+    input[type=submit] {
+      max-width: 150px;
+      color: $white;
+      background-color: $teal;
+      &:not([disabled]):not(.disabled):active {
+        color: $white;
+        background-color: $teal;
+      }
+    }
+    .wpcf7-validation-errors {
+      color: $carl;
+      background-color: transparent;
+      border: 1px solid $carl;
+      border-radius: none;
+    }
+  }
+  // mail list specific
+  &.mail-list { 
+    color: $black;
+    input[type=submit] {
+      background-color: $black;
+      color: $white;
+      &:not([disabled]):not(.disabled):active {
+        color: $white;
+        background-color: $black;
+      }
+    }
+    //error stuff
+    .wpcf7 .wpcf7-validation-errors {
+      display: none !important;
+    }
+  }
+  
 }
 
 /*! TABLET */
 @media only screen and (min-width: $bp-tablet) {
   .home {
+    .banner {
+      min-height: 400px;
+      background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png);
+    }
+  }
+}
+
+@media only screen and (min-width: $bootstrapTablet) {
+  .blog-post {
+    display: block !important; //reveal blogposts when 2 column
   }
 }
 
 /*! DESKTOP */
 @media only screen and (min-width: $bp-desktop) {
   .home {
+    .banner {
+      min-height: 500px;
+      background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png);
+    }
   }
 }

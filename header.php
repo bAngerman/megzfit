@@ -26,27 +26,3 @@ $container = get_theme_mod( 'understrap_container_type' );
 <body <?php body_class(); ?>>
 
 <div class="hfeed site" id="page">
-	<header class="wrapper" id="wrapper-header">
-	<!-- ******************* The Navbar Area ******************* -->
-		<div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
-
-			<?php if ( 'container' == $container ) : ?>
-				<div class="container">
-			<?php endif; ?>
-				<!-- The WordPress Menu goes here -->
-				<?php wp_nav_menu(
-					array(
-						'theme_location'  => 'primary',
-						'container_class' => 'collapse navbar-collapse',
-						'container_id'    => 'navbarNavDropdown',
-						'menu_class'      => 'navbar-nav',
-						'fallback_cb'     => '',
-						'menu_id'         => 'main-menu',
-						'walker'          => new understrap_WP_Bootstrap_Navwalker(),
-					)
-				); ?>
-			<?php if ( 'container' == $container ) : ?>
-				</div><!-- .container -->
-			<?php endif; ?>
-		</div><!-- .wrapper-navbar end -->
-	</header>
