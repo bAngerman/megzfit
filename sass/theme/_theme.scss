@@ -162,6 +162,13 @@ body {
       h1 {
         font-weight: $light;
       }
+      .logo {
+        width: 225px;
+        margin: 0 auto;
+      }
+      img {
+        max-width: 100%;
+      }
     }
   }
   .about-me {

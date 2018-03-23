@@ -140,6 +140,15 @@ body a:hover {
   font-weight: 300;
 }
 
+.home .banner .banner-inner .logo {
+  width: 225px;
+  margin: 0 auto;
+}
+
+.home .banner .banner-inner img {
+  max-width: 100%;
+}
+
 .home .about-me {
   background-color: #000;
   color: #76cfbf;
