@@ -26,3 +26,15 @@ $container = get_theme_mod( 'understrap_container_type' );
 <body <?php body_class(); ?>>
 
 <div class="hfeed site" id="page">
+	<div class="nav-container container">
+	<nav class="nav out">
+		<?php wp_nav_menu(
+			array(
+				'menu_class'      => 'nav-item',
+				'fallback_cb'     => 'false',
+				'menu_id'         => 'Main'
+			)
+		); ?>
+		<a href="#" id="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+	</nav>
+	</div>

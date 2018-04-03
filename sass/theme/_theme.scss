@@ -90,6 +90,7 @@ html {
   }
 }
 body {
+  position: relative;
   h1,h2,h3,h4,h5,h6 {
     font-family: $barlow;
     font-weight: $medium;
@@ -112,6 +113,86 @@ body {
   }
   a:hover {
     @include transition($t-fast);
+  }
+  .nav {
+    text-align: right;
+    position: fixed;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    height: 50vh;
+    width: 50vw;
+    max-width: 100vw;
+    max-height: 100vh;
+    background-color: $teal;
+    color: $white;
+    font-family: $barlow;
+    z-index: 100;
+    transition: left 0.4s;
+    overflow: hidden;
+    left: 50%;
+    &.out {
+      left: 100%;
+      transition: left 0.4s;
+    }
+    .menu-main-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    ul {
+      list-style-type: none;
+      padding-top: 2rem;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      a {
+        padding: 10px 5px;
+        color: $white;
+        display: block;
+      }
+      a:hover {
+        color: darken($white, 10);
+        text-decoration: none;
+      }
+    }
+    .fa {
+      color: $white;
+    }
+    #nav-toggle { 
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 110;
+      height: 22px;
+    }
+    #nav-toggle:hover {
+      color: darken($white, 10);
+    }
+  }
+  @media only screen and (min-width: $bootstrapTablet) {
+    .nav {
+      position: absolute;
+      top: 0;
+      left: 50% !important;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      height: auto;
+      width: auto;
+      background-color: transparent;
+      &.out {
+        left: auto;
+      }
+      li {
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      
+      #nav-toggle {
+        display: none;
+      }
+    }
   }
 }
 
@@ -356,5 +437,67 @@ body {
       min-height: 500px;
       background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png);
     }
+  }
+}
+
+.error404 {
+  #page {
+    background-color: $white;
+  }
+  .four-oh-four {
+    min-height: 70vh; 
+  }
+}
+
+
+.single .nav a, .archive .nav a, .single .nav .fa, .archive .nav .fa, .error404 .nav a, .error404 .nav .fa{
+  color: $black;
+}
+
+.single .nav-container, .archive .nav-container {
+  padding-top: 60px;
+}
+  
+//Single-post
+.single {
+  #page {
+    background-color: $white;
+  }
+}
+
+//Archive
+.archive {
+  #page {
+    background-color: $white;
+  }
+}
+
+.archive, .single {
+  .blog-post {
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: $teal;
+  }
+  .sidebar {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: $teal;
+    padding: 12px;
+  }
+  .sidebar-outer {
+    position: relative;
+  }
+  @media only screen and (min-width: $bootstrapTablet) {
+    .sidebar {
+      position: sticky;
+      top: 0px;
+    }
+  }
+  .content {
+   
+  }
+  .sidebar {
+   
   }
 }

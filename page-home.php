@@ -22,11 +22,11 @@ $container = get_theme_mod( 'understrap_container_type' );
       <div class="col-12 col-md-8 mx-auto">
         <?php
           $aboutMe = new WP_Query( array('p'=>'22') );
-        if ($aboutMe->have_posts()) : $aboutMe->the_post(); ?>
-          <h2><?php echo the_field('about'); ?></h2>
-          <img src="<?php the_field('headshot_image'); ?>" alt="headshot">
-          <p><?php the_field('about_content'); ?></p>
-        <?php endif; ?>
+          if ($aboutMe->have_posts()) : $aboutMe->the_post(); ?>
+            <h2><?php echo the_field('about'); ?></h2>
+            <img src="<?php the_field('headshot_image'); ?>" alt="headshot">
+            <p><?php the_field('about_content'); ?></p>
+          <?php endif; ?>
         </div>
       </div>
     </div>
