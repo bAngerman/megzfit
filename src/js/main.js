@@ -12,4 +12,11 @@
     $('#nav-toggle i').toggleClass('fa-bars fa-times');
   });
 
+  $('#cat').on('change', function(e) {
+    var dd = $('#cat')[0];
+    if (dd.options[dd.selectedIndex].value > 0) {
+      location.href = window.location.origin + "?cat=" + dd.options[dd.selectedIndex].value;
+    }
+  });
+
 }(jQuery));

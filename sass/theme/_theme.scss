@@ -114,6 +114,9 @@ body {
   a:hover {
     @include transition($t-fast);
   }
+  iframe {
+    width: 100%;
+  }
   .nav {
     text-align: right;
     position: fixed;
@@ -172,14 +175,14 @@ body {
   }
   @media only screen and (min-width: $bootstrapTablet) {
     .nav {
-      position: absolute;
-      top: 0;
-      left: 50% !important;
-      -webkit-transform: translateX(-50%);
-      transform: translateX(-50%);
+      position: relative;
+      margin-bottom: -48.8px;
       height: auto;
       width: auto;
       background-color: transparent;
+      .menu-main-container {
+        justify-content: flex-end;
+      }
       &.out {
         left: auto;
       }
@@ -242,12 +245,14 @@ body {
     .banner-inner {
       h1 {
         font-weight: $light;
+        text-align: center;
       }
       .logo {
         width: 225px;
         margin: 0 auto;
       }
       img {
+        min-width: 225px;
         max-width: 100%;
       }
     }
@@ -287,6 +292,10 @@ body {
     }
     .blog-inner {
       .blog-post {
+        iframe {
+          vertical-align: bottom;
+          width: 100%;
+        }
         .post-content {
           background-color: $teal;
           position: relative;
@@ -299,6 +308,9 @@ body {
             text-transform: uppercase;
           }
           a {
+            font-family: $barlow;
+            padding: 6px 6px;
+            text-transform: uppercase;
             position: absolute;
             bottom: 12px;
             right: 12px;
@@ -318,8 +330,6 @@ body {
         display: none;
       }
     }
-  }
-  .vids {
   }
 }
 
@@ -414,11 +424,131 @@ body {
   
 }
 
+.error404 {
+  #page {
+    background-color: $white;
+  }
+  .four-oh-four {
+    min-height: 50vh; 
+  }
+}
+
+.archive, .single {
+  #page {
+    background-color: $dark-grey;
+  }
+  .banner {
+    @extend .d-center;
+    min-height: 350px;
+    background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg);
+    background-size: cover;
+    background-position: center center;
+    color: $white;
+    font-family: $barlow;
+    text-transform: uppercase;
+    .banner-inner {
+      h1 {
+        font-weight: $light;
+        text-align: center;
+      }
+      .logo {
+        width: 225px;
+        margin: 0 auto;
+      }
+      img {
+        min-width: 225px;
+        max-width: 100%;
+      }
+    }
+  }
+  .blog-post {
+    padding: 0px 18px 36px 18px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: $light-grey;
+    .post-image {
+      margin-left: -18px;
+      margin-right: -18px;
+    }
+    iframe {
+      margin-left: -18px;
+      margin-right: -18px;
+      width: calc(100% + 36px);
+      margin-bottom: -6px;
+    }
+    .post-info {
+      padding: 6px 18px 6px 18px;
+      margin-left: -18px;
+      margin-right: -18px;
+      margin-bottom: 6px;
+      background-color: $black;
+      color: $teal;
+      font-family: $barlow;
+      text-transform: uppercase;
+      p {
+        margin-bottom: 6px;
+      }
+      a {
+        color: $teal;
+        text-decoration: none;
+        &:hover {
+          color: $white;
+          text-decoration: none;
+
+        }
+      }
+    }
+    .read-more {
+      font-family: $barlow;
+      padding: 6px 6px;
+      text-transform: uppercase;
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background-color: $teal;
+      color: $black; 
+      border-radius: 0;
+    }
+    text-decoration: none;
+    .read-more:hover {
+      color: $black;
+      text-decoration: none;
+    }
+    .read-more:focus {
+      box-shadow: none;
+    }
+  }
+  .sidebar {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: $teal;
+    padding: 12px;
+    select {
+      width: 100%;
+    }
+  }
+  .sidebar-outer {
+    position: relative;
+  }
+  @media only screen and (min-width: $bootstrapTablet) {
+    .sidebar {
+      position: sticky;
+      top: 12px;
+    }
+  } 
+}
+
 /*! TABLET */
 @media only screen and (min-width: $bp-tablet) {
   .home {
     .banner {
-      min-height: 400px;
+      min-height: 500px;
+      background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png);
+    }
+  }
+  .single, .archive {
+    .banner {
+      min-height: 500px;
       background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png);
     }
   }
@@ -434,70 +564,14 @@ body {
 @media only screen and (min-width: $bp-desktop) {
   .home {
     .banner {
-      min-height: 500px;
+      min-height: 700px;
       background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png);
     }
   }
-}
-
-.error404 {
-  #page {
-    background-color: $white;
-  }
-  .four-oh-four {
-    min-height: 70vh; 
-  }
-}
-
-
-.single .nav a, .archive .nav a, .single .nav .fa, .archive .nav .fa, .error404 .nav a, .error404 .nav .fa{
-  color: $black;
-}
-
-.single .nav-container, .archive .nav-container {
-  padding-top: 60px;
-}
-  
-//Single-post
-.single {
-  #page {
-    background-color: $white;
-  }
-}
-
-//Archive
-.archive {
-  #page {
-    background-color: $white;
-  }
-}
-
-.archive, .single {
-  .blog-post {
-    padding: 12px;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    background-color: $teal;
-  }
-  .sidebar {
-    margin-top: 12px;
-    margin-bottom: 12px;
-    background-color: $teal;
-    padding: 12px;
-  }
-  .sidebar-outer {
-    position: relative;
-  }
-  @media only screen and (min-width: $bootstrapTablet) {
-    .sidebar {
-      position: sticky;
-      top: 0px;
+  .archive, .single {
+    .banner {
+      min-height: 700px;
+      background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png);
     }
-  }
-  .content {
-   
-  }
-  .sidebar {
-   
   }
 }

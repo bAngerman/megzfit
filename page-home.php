@@ -54,14 +54,21 @@ $container = get_theme_mod( 'understrap_container_type' );
           <div class="row">
           <?php while($blogPosts->have_posts()) : $blogPosts->the_post(); ?>
             <div class="blog-post col-12 col-md-6">
-              <?php if(has_post_thumbnail()): ?>
-                <div class="post-image">
-                  <img src="<?php esc_url(the_post_thumbnail_url()); ?>" title="<?php the_title() . ' thumbnail image' ?>" class="image-fluid" alt="">
-                </div>
-              <?php endif; ?>
+              <?php 
+                // get the video, if that doesnt exist, try to get the image.
+                if(get_field('video')) {                  
+                  the_field('video');
+                } 
+                else if (get_field('image')): ?>
+                  <div class=\"post-image\">
+                    <img src="<?php the_field('image'); ?>" title="<?php the_title(); ?>" thumbnail image class="image-fluid">
+                  </div>
+                <?php endif; ?>
               <div class="post-content">
+                
                 <h3><?php the_title(); ?></h3>
-                <p><?php the_excerpt(); ?></p>
+                <p><?php echo shorten_string(get_field('message'), 55); ?></p>
+                <a href="<?php the_permalink(); ?>">Read More</a>
               </div>
             </div>
           <?php endwhile; ?>
@@ -70,7 +77,6 @@ $container = get_theme_mod( 'understrap_container_type' );
       </div>
     </div>
   </div>
-  <div class="vids"></div>
   <div class="contact forms">
     <div class="<?php echo esc_attr( $container ); ?> forms-inner">
       <h2>Contact Me</h2>

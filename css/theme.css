@@ -5339,7 +5339,7 @@ button.bg-dark:hover {
 .d-table-cell {
   display: table-cell !important; }
 
-.d-flex, .d-center, .home .banner, .footer .social {
+.d-flex, .d-center, .home .banner, .archive .banner, .single .banner, .footer .social {
   display: flex !important; }
 
 .d-inline-flex {
@@ -7225,7 +7225,7 @@ a.skip-link {
     MegzFit Theme custom styles
 */
 /*! VARIABLES */
-.d-flex, .d-center, .home .banner, .footer .social {
+.d-flex, .d-center, .home .banner, .archive .banner, .single .banner, .footer .social {
   display: -webkit-box;
   /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;
@@ -7241,7 +7241,7 @@ a.skip-link {
   flex: 0 1 auto;
   min-height: 100%; }
 
-.d-center, .home .banner {
+.d-center, .home .banner, .archive .banner, .single .banner {
   justify-content: center;
   align-items: center; }
 
@@ -7291,6 +7291,8 @@ body {
     -moz-transition: 100ms all linear;
     -o-transition: 100ms all linear;
     transition: 100ms all linear; }
+  body iframe {
+    width: 100%; }
   body .nav {
     text-align: right;
     position: fixed;
@@ -7304,18 +7306,12 @@ body {
     color: #fff;
     font-family: "Barlow Condensed", Helvetica, sans-serif;
     z-index: 100;
-    -webkit-transition: 300ms all linear;
-    -moz-transition: 300ms all linear;
-    -o-transition: 300ms all linear;
-    transition: 300ms all linear;
+    transition: left 0.4s;
     overflow: hidden;
     left: 50%; }
     body .nav.out {
       left: 100%;
-      -webkit-transition: 300ms all linear;
-      -moz-transition: 300ms all linear;
-      -o-transition: 300ms all linear;
-      transition: 300ms all linear; }
+      transition: left 0.4s; }
     body .nav .menu-main-container {
       width: 100%;
       display: flex;
@@ -7346,14 +7342,13 @@ body {
       color: #e6e6e6; }
   @media only screen and (min-width: 768px) {
     body .nav {
-      position: absolute;
-      top: 0;
-      left: 50% !important;
-      -webkit-transform: translateX(-50%);
-      transform: translateX(-50%);
+      position: relative;
+      margin-bottom: -48.8px;
       height: auto;
       width: auto;
       background-color: transparent; }
+      body .nav .menu-main-container {
+        justify-content: flex-end; }
       body .nav.out {
         left: auto; }
       body .nav li {
@@ -7395,11 +7390,13 @@ body {
     font-family: "Barlow Condensed", Helvetica, sans-serif;
     text-transform: uppercase; }
     .home .banner .banner-inner h1 {
-      font-weight: 300; }
+      font-weight: 300;
+      text-align: center; }
     .home .banner .banner-inner .logo {
       width: 225px;
       margin: 0 auto; }
     .home .banner .banner-inner img {
+      min-width: 225px;
       max-width: 100%; }
   .home .about-me {
     background-color: #000;
@@ -7425,6 +7422,9 @@ body {
       letter-spacing: 1px;
       text-transform: uppercase;
       font-size: 1.8rem; }
+    .home .blog .blog-inner .blog-post iframe {
+      vertical-align: bottom;
+      width: 100%; }
     .home .blog .blog-inner .blog-post .post-content {
       background-color: #76cfbf;
       position: relative;
@@ -7436,6 +7436,9 @@ body {
         font-weight: 300;
         text-transform: uppercase; }
       .home .blog .blog-inner .blog-post .post-content a {
+        font-family: "Barlow Condensed", Helvetica, sans-serif;
+        padding: 6px 6px;
+        text-transform: uppercase;
         position: absolute;
         bottom: 12px;
         right: 12px;
@@ -7509,10 +7512,103 @@ body {
     .forms.mail-list .wpcf7 .wpcf7-validation-errors {
       display: none !important; }
 
+.error404 #page {
+  background-color: #fff; }
+
+.error404 .four-oh-four {
+  min-height: 50vh; }
+
+.archive #page, .single #page {
+  background-color: #7c7c7c; }
+
+.archive .banner, .single .banner {
+  min-height: 350px;
+  background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg);
+  background-size: cover;
+  background-position: center center;
+  color: #fff;
+  font-family: "Barlow Condensed", Helvetica, sans-serif;
+  text-transform: uppercase; }
+  .archive .banner .banner-inner h1, .single .banner .banner-inner h1 {
+    font-weight: 300;
+    text-align: center; }
+  .archive .banner .banner-inner .logo, .single .banner .banner-inner .logo {
+    width: 225px;
+    margin: 0 auto; }
+  .archive .banner .banner-inner img, .single .banner .banner-inner img {
+    min-width: 225px;
+    max-width: 100%; }
+
+.archive .blog-post, .single .blog-post {
+  padding: 0px 18px 36px 18px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: #efefef;
+  text-decoration: none; }
+  .archive .blog-post .post-image, .single .blog-post .post-image {
+    margin-left: -18px;
+    margin-right: -18px; }
+  .archive .blog-post iframe, .single .blog-post iframe {
+    margin-left: -18px;
+    margin-right: -18px;
+    width: calc(100% + 36px);
+    margin-bottom: -6px; }
+  .archive .blog-post .post-info, .single .blog-post .post-info {
+    padding: 6px 18px 6px 18px;
+    margin-left: -18px;
+    margin-right: -18px;
+    margin-bottom: 6px;
+    background-color: #000;
+    color: #76cfbf;
+    font-family: "Barlow Condensed", Helvetica, sans-serif;
+    text-transform: uppercase; }
+    .archive .blog-post .post-info p, .single .blog-post .post-info p {
+      margin-bottom: 6px; }
+    .archive .blog-post .post-info a, .single .blog-post .post-info a {
+      color: #76cfbf;
+      text-decoration: none; }
+      .archive .blog-post .post-info a:hover, .single .blog-post .post-info a:hover {
+        color: #fff;
+        text-decoration: none; }
+  .archive .blog-post .read-more, .single .blog-post .read-more {
+    font-family: "Barlow Condensed", Helvetica, sans-serif;
+    padding: 6px 6px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: #76cfbf;
+    color: #000;
+    border-radius: 0; }
+  .archive .blog-post .read-more:hover, .single .blog-post .read-more:hover {
+    color: #000;
+    text-decoration: none; }
+  .archive .blog-post .read-more:focus, .single .blog-post .read-more:focus {
+    box-shadow: none; }
+
+.archive .sidebar, .single .sidebar {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: #76cfbf;
+  padding: 12px; }
+  .archive .sidebar select, .single .sidebar select {
+    width: 100%; }
+
+.archive .sidebar-outer, .single .sidebar-outer {
+  position: relative; }
+
+@media only screen and (min-width: 768px) {
+  .archive .sidebar, .single .sidebar {
+    position: sticky;
+    top: 12px; } }
+
 /*! TABLET */
 @media only screen and (min-width: 600px) {
   .home .banner {
-    min-height: 400px;
+    min-height: 500px;
+    background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png); }
+  .single .banner, .archive .banner {
+    min-height: 500px;
     background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png); } }
 
 @media only screen and (min-width: 768px) {
@@ -7522,46 +7618,11 @@ body {
 /*! DESKTOP */
 @media only screen and (min-width: 992px) {
   .home .banner {
-    min-height: 500px;
+    min-height: 700px;
+    background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png); }
+  .archive .banner, .single .banner {
+    min-height: 700px;
     background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png); } }
-
-.error404 #page {
-  background-color: #fff; }
-
-.error404 .four-oh-four {
-  min-height: 70vh; }
-
-.single .nav a, .archive .nav a, .single .nav .fa, .archive .nav .fa, .error404 .nav a, .error404 .nav .fa {
-  color: #000; }
-
-.single .nav-container, .archive .nav-container {
-  padding-top: 60px; }
-
-.single #page {
-  background-color: #fff; }
-
-.archive #page {
-  background-color: #fff; }
-
-.archive .blog-post, .single .blog-post {
-  padding: 12px;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  background-color: #76cfbf; }
-
-.archive .sidebar, .single .sidebar {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  background-color: #76cfbf;
-  padding: 12px; }
-
-.archive .sidebar-outer, .single .sidebar-outer {
-  position: relative; }
-
-@media only screen and (min-width: 768px) {
-  .archive .sidebar, .single .sidebar {
-    position: sticky;
-    top: 0px; } }
 
 /*
 * Use existing Bootstrap 4 classes and
