@@ -214,7 +214,6 @@ body {
       color: $black;
     }
     a:hover, a:active {
-      color: $black;
       color: $white;
       transition:all .3s ease-in-out;
 
@@ -265,7 +264,6 @@ body {
     background-color: $black;
     color: $teal;
     text-align: center;
-    padding: 12px 24px;
     padding: 24px 24px;
 
     .about-me-inner {
@@ -302,7 +300,6 @@ body {
     }
   }
   .blog {
-    padding: 12px 0 18px 0;
     padding: 24px 0 24px 0;
     background-color: $mid-grey;
     text-align: center;
@@ -340,7 +337,6 @@ body {
             border-radius: 0;
           }
           a:hover {
-            color: $black;
             background-color: $black;
             color:$white;
             transition:all .3s ease-in-out;
@@ -377,7 +373,6 @@ body {
       text-align: left;
     }
     label {
-      font-weight: $medium;
       font-weight: $regular;
       margin-bottom:1rem;
     }
@@ -418,7 +413,6 @@ body {
     color: $teal;
     padding:24px;
     input[type=submit] {
-      max-width: 150px;
       max-width: 400px;
       color: $white;
       background-color: $teal;
