@@ -5339,7 +5339,7 @@ button.bg-dark:hover {
 .d-table-cell {
   display: table-cell !important; }
 
-.d-flex, .d-center, .home .banner, .archive .banner, .single .banner, .footer .social {
+.d-flex, .d-center, .home .banner, .footer .social {
   display: flex !important; }
 
 .d-inline-flex {
@@ -7225,7 +7225,7 @@ a.skip-link {
     MegzFit Theme custom styles
 */
 /*! VARIABLES */
-.d-flex, .d-center, .home .banner, .archive .banner, .single .banner, .footer .social {
+.d-flex, .d-center, .home .banner, .footer .social {
   display: -webkit-box;
   /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;
@@ -7241,7 +7241,7 @@ a.skip-link {
   flex: 0 1 auto;
   min-height: 100%; }
 
-.d-center, .home .banner, .archive .banner, .single .banner {
+.d-center, .home .banner {
   justify-content: center;
   align-items: center; }
 
@@ -7268,7 +7268,8 @@ html {
     font-weight: 400; }
 
 body {
-  position: relative; }
+  position: relative;
+  -webkit-transform: translate3d(0, 0, 0); }
   body h1, body h2, body h3, body h4, body h5, body h6 {
     font-family: "Barlow Condensed", Helvetica, sans-serif;
     font-weight: 500; }
@@ -7518,73 +7519,25 @@ body {
 .error404 .four-oh-four {
   min-height: 50vh; }
 
-.archive #page, .single #page {
-  background-color: #7c7c7c; }
+.archive .blog-post iframe, .single .blog-post iframe {
+  margin-left: -18px;
+  margin-right: -18px;
+  width: calc(100% + 36px);
+  margin-bottom: -6px; }
 
-.archive .banner, .single .banner {
-  min-height: 350px;
-  background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg);
-  background-size: cover;
-  background-position: center center;
-  color: #fff;
-  font-family: "Barlow Condensed", Helvetica, sans-serif;
-  text-transform: uppercase; }
-  .archive .banner .banner-inner h1, .single .banner .banner-inner h1 {
-    font-weight: 300;
-    text-align: center; }
-  .archive .banner .banner-inner .logo, .single .banner .banner-inner .logo {
-    width: 225px;
-    margin: 0 auto; }
-  .archive .banner .banner-inner img, .single .banner .banner-inner img {
-    min-width: 225px;
-    max-width: 100%; }
-
-.archive .blog-post, .single .blog-post {
-  padding: 0px 18px 36px 18px;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  background-color: #efefef;
+.archive .blog-post .post-info a, .single .blog-post .post-info a {
+  color: #76cfbf;
   text-decoration: none; }
-  .archive .blog-post .post-image, .single .blog-post .post-image {
-    margin-left: -18px;
-    margin-right: -18px; }
-  .archive .blog-post iframe, .single .blog-post iframe {
-    margin-left: -18px;
-    margin-right: -18px;
-    width: calc(100% + 36px);
-    margin-bottom: -6px; }
-  .archive .blog-post .post-info, .single .blog-post .post-info {
-    padding: 6px 18px 6px 18px;
-    margin-left: -18px;
-    margin-right: -18px;
-    margin-bottom: 6px;
-    background-color: #000;
-    color: #76cfbf;
-    font-family: "Barlow Condensed", Helvetica, sans-serif;
-    text-transform: uppercase; }
-    .archive .blog-post .post-info p, .single .blog-post .post-info p {
-      margin-bottom: 6px; }
-    .archive .blog-post .post-info a, .single .blog-post .post-info a {
-      color: #76cfbf;
-      text-decoration: none; }
-      .archive .blog-post .post-info a:hover, .single .blog-post .post-info a:hover {
-        color: #fff;
-        text-decoration: none; }
-  .archive .blog-post .read-more, .single .blog-post .read-more {
-    font-family: "Barlow Condensed", Helvetica, sans-serif;
-    padding: 6px 6px;
-    text-transform: uppercase;
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    background-color: #76cfbf;
-    color: #000;
-    border-radius: 0; }
-  .archive .blog-post .read-more:hover, .single .blog-post .read-more:hover {
-    color: #000;
+  .archive .blog-post .post-info a:hover, .single .blog-post .post-info a:hover {
+    color: #fff;
     text-decoration: none; }
-  .archive .blog-post .read-more:focus, .single .blog-post .read-more:focus {
-    box-shadow: none; }
+
+.archive .blog-post .read-more:hover, .single .blog-post .read-more:hover {
+  color: #000;
+  text-decoration: none; }
+
+.archive .blog-post .read-more:focus, .single .blog-post .read-more:focus {
+  box-shadow: none; }
 
 .archive .sidebar, .single .sidebar {
   margin-top: 12px;
