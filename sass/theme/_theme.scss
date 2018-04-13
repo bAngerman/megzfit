@@ -215,6 +215,9 @@ body {
     }
     a:hover, a:active {
       color: $black;
+      color: $white;
+      transition:all .3s ease-in-out;
+
     }
   }
   .copy {
@@ -263,11 +266,13 @@ body {
     color: $teal;
     text-align: center;
     padding: 12px 24px;
+    padding: 24px 24px;
 
     .about-me-inner {
       h2 {
         text-transform: uppercase;
         letter-spacing: 1px;
+        padding-bottom: 12px;
       }
       img {
         padding: 12px 0px;
@@ -281,9 +286,24 @@ body {
   }
   .ig {
     padding: 0 0 12px 0;
+    #sb_instagram .sbi_follow_btn a{
+      background-color: $black;
+      font-family: $barlow;
+      text-transform: uppercase;
+      padding: 12px 20px 12px 20px;
+    }
+    #sb_instagram .sbi_follow_btn a:hover{
+      background-color: $white;
+      color:$black;
+      transition:all .3s ease-in-out;
+      opacity: 1;
+
+
+    }
   }
   .blog {
     padding: 12px 0 18px 0;
+    padding: 24px 0 24px 0;
     background-color: $mid-grey;
     text-align: center;
     .blog-title {
@@ -310,7 +330,7 @@ body {
           }
           a {
             font-family: $barlow;
-            padding: 6px 6px;
+            padding: 8px 24px;
             text-transform: uppercase;
             position: absolute;
             bottom: 12px;
@@ -321,6 +341,10 @@ body {
           }
           a:hover {
             color: $black;
+            background-color: $black;
+            color:$white;
+            transition:all .3s ease-in-out;
+            text-decoration: none;
           }
           a:focus {
             box-shadow: none;
@@ -354,6 +378,8 @@ body {
     }
     label {
       font-weight: $medium;
+      font-weight: $regular;
+      margin-bottom:1rem;
     }
     input, textarea, input {
       border: 1px solid transparent;
@@ -390,13 +416,21 @@ body {
   &.contact { 
     background-color: $black;
     color: $teal;
+    padding:24px;
     input[type=submit] {
       max-width: 150px;
+      max-width: 400px;
       color: $white;
       background-color: $teal;
       &:not([disabled]):not(.disabled):active {
         color: $white;
         background-color: $teal;
+      }
+      &:not([disabled]):not(.disabled):hover{
+        color: $teal;
+        background-color: $white;
+       transition:all .3s ease-in-out;
+
       }
     }
     .wpcf7-validation-errors {
@@ -415,6 +449,11 @@ body {
       &:not([disabled]):not(.disabled):active {
         color: $white;
         background-color: $black;
+      }
+      &:not([disabled]):not(.disabled):hover{
+        color: $black;
+        background-color: $white;
+        transition:all .3s ease-in-out;
       }
     }
     //error stuff
@@ -516,6 +555,20 @@ body {
       min-height: 500px;
       background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png);
     }
+    .about-me{
+      .about-me-inner{
+        h2{
+          font-size: 2.3rem;
+        }
+      }
+    } // close about-me
+    .blog{
+      .blog-title{
+        h2{
+          font-size: 2.3rem;
+        }
+      }
+    } //close blog
   }
   .single, .archive {
     .banner {
@@ -538,7 +591,33 @@ body {
       min-height: 700px;
       background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png);
     }
+    .about-me{
+      padding:48px 24px;
+      .about-me-inner{
+        h2{
+          font-size: 2.6rem;
+          margin-bottom:36px;
+        }
+        p{
+          padding: 24px 0px 0px 0px;
+          font-size: 1.3rem;
+        }
+      }
+    } // close about-me
+    .blog{
+      padding:48px 24px;
+      .blog-title{
+        h2{
+          font-size: 2.6rem;
+          margin-bottom:24px;
+        }
+      }
+    } //close blog
+    .contact{
+      padding:48px 24px;
+    }
   }
+  
   .archive, .single {
     .banner {
       min-height: 700px;

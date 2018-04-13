@@ -7369,7 +7369,8 @@ body {
     .footer .social a {
       color: #000; }
     .footer .social a:hover, .footer .social a:active {
-      color: #000; }
+      color: #fff;
+      transition: all .3s ease-in-out; }
   .footer .copy {
     text-align: center;
     font-family: "Barlow Condensed", Helvetica, sans-serif;
@@ -7403,10 +7404,11 @@ body {
     background-color: #000;
     color: #76cfbf;
     text-align: center;
-    padding: 12px 24px; }
+    padding: 24px 24px; }
     .home .about-me .about-me-inner h2 {
       text-transform: uppercase;
-      letter-spacing: 1px; }
+      letter-spacing: 1px;
+      padding-bottom: 12px; }
     .home .about-me .about-me-inner img {
       padding: 12px 0px;
       border: 1px transparent;
@@ -7415,8 +7417,18 @@ body {
       color: #fff; }
   .home .ig {
     padding: 0 0 12px 0; }
+    .home .ig #sb_instagram .sbi_follow_btn a {
+      background-color: #000;
+      font-family: "Barlow Condensed", Helvetica, sans-serif;
+      text-transform: uppercase;
+      padding: 12px 20px 12px 20px; }
+    .home .ig #sb_instagram .sbi_follow_btn a:hover {
+      background-color: #fff;
+      color: #000;
+      transition: all .3s ease-in-out;
+      opacity: 1; }
   .home .blog {
-    padding: 12px 0 18px 0;
+    padding: 24px 0 24px 0;
     background-color: #dbdddc;
     text-align: center; }
     .home .blog .blog-title {
@@ -7438,7 +7450,7 @@ body {
         text-transform: uppercase; }
       .home .blog .blog-inner .blog-post .post-content a {
         font-family: "Barlow Condensed", Helvetica, sans-serif;
-        padding: 6px 6px;
+        padding: 8px 24px;
         text-transform: uppercase;
         position: absolute;
         bottom: 12px;
@@ -7447,7 +7459,10 @@ body {
         color: #000;
         border-radius: 0; }
       .home .blog .blog-inner .blog-post .post-content a:hover {
-        color: #000; }
+        background-color: #000;
+        color: #fff;
+        transition: all .3s ease-in-out;
+        text-decoration: none; }
       .home .blog .blog-inner .blog-post .post-content a:focus {
         box-shadow: none; }
     .home .blog .blog-inner .blog-post:not(:first-child) {
@@ -7467,7 +7482,8 @@ body {
     margin: 0;
     text-align: left; }
   .forms .forms-inner label {
-    font-weight: 500; }
+    font-weight: 400;
+    margin-bottom: 1rem; }
   .forms .forms-inner input, .forms .forms-inner textarea, .forms .forms-inner input {
     border: 1px solid transparent;
     border-radius: 0; }
@@ -7489,14 +7505,19 @@ body {
     border-color: #ff7f50; }
   .forms.contact {
     background-color: #000;
-    color: #76cfbf; }
+    color: #76cfbf;
+    padding: 24px; }
     .forms.contact input[type=submit] {
-      max-width: 150px;
+      max-width: 400px;
       color: #fff;
       background-color: #76cfbf; }
       .forms.contact input[type=submit]:not([disabled]):not(.disabled):active {
         color: #fff;
         background-color: #76cfbf; }
+      .forms.contact input[type=submit]:not([disabled]):not(.disabled):hover {
+        color: #76cfbf;
+        background-color: #fff;
+        transition: all .3s ease-in-out; }
     .forms.contact .wpcf7-validation-errors {
       color: #ff7f50;
       background-color: transparent;
@@ -7510,6 +7531,10 @@ body {
       .forms.mail-list input[type=submit]:not([disabled]):not(.disabled):active {
         color: #fff;
         background-color: #000; }
+      .forms.mail-list input[type=submit]:not([disabled]):not(.disabled):hover {
+        color: #000;
+        background-color: #fff;
+        transition: all .3s ease-in-out; }
     .forms.mail-list .wpcf7 .wpcf7-validation-errors {
       display: none !important; }
 
@@ -7560,6 +7585,10 @@ body {
   .home .banner {
     min-height: 500px;
     background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png); }
+  .home .about-me .about-me-inner h2 {
+    font-size: 2.3rem; }
+  .home .blog .blog-title h2 {
+    font-size: 2.3rem; }
   .single .banner, .archive .banner {
     min-height: 500px;
     background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png); } }
@@ -7573,6 +7602,21 @@ body {
   .home .banner {
     min-height: 700px;
     background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png); }
+  .home .about-me {
+    padding: 48px 24px; }
+    .home .about-me .about-me-inner h2 {
+      font-size: 2.6rem;
+      margin-bottom: 36px; }
+    .home .about-me .about-me-inner p {
+      padding: 24px 0px 0px 0px;
+      font-size: 1.3rem; }
+  .home .blog {
+    padding: 48px 24px; }
+    .home .blog .blog-title h2 {
+      font-size: 2.6rem;
+      margin-bottom: 24px; }
+  .home .contact {
+    padding: 48px 24px; }
   .archive .banner, .single .banner {
     min-height: 700px;
     background-image: linear-gradient(rgba(118, 207, 191, 0.6), rgba(118, 207, 191, 0.6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png); } }
