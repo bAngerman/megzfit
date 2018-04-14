@@ -56,18 +56,16 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="blog-post col-12 col-md-6">
               <?php 
                 // get the video, if that doesnt exist, try to get the image.
-                if(get_field('video')) {                  
-                  the_field('video');
-                } 
-                else if (get_field('image')): ?>
-                  <div class=\"post-image\">
-                    <img src="<?php the_field('image'); ?>" title="<?php the_title(); ?>" thumbnail image class="image-fluid">
+                if(get_field('featured_video')): ?>         
+                  <?php the_field('featured_video'); ?>
+                <?php elseif (get_field('featured_image')): ?>
+                  <div class="post-image">
+                    <img src="<?php the_field('featured_image'); ?>" title="<?php the_title(); ?>" class="image-fluid" />
                   </div>
                 <?php endif; ?>
               <div class="post-content">
-                
                 <h3><?php the_title(); ?></h3>
-                <p><?php echo shorten_string(get_field('message'), 55); ?></p>
+                <p><?php echo wp_trim_words( get_field('content'), $num_words = 55, $more = '...' );?></p>
                 <a href="<?php the_permalink(); ?>">Read More</a>
               </div>
             </div>

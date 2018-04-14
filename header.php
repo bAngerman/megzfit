@@ -26,15 +26,26 @@ $container = get_theme_mod( 'understrap_container_type' );
 <body <?php body_class(); ?>>
 
 <div class="hfeed site" id="page">
-	<div class="nav-container container">
-	<nav class="nav out">
-		<?php wp_nav_menu(
-			array(
-				'menu_class'      => 'nav-item',
-				'fallback_cb'     => 'false',
-				'menu_id'         => 'Main'
-			)
-		); ?>
-		<a href="#" id="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
-	</nav>
+	<div class="nav-container">
+		<div class="container <?php if( is_archive() || is_single() ) { echo "space-between-flex"; }?>">
+			<?php if( is_archive() || is_single() ) :
+			// logo on nav for non front-page posts ?>
+			<div class="nav-logo">
+				<?php $logo = new WP_Query( array('p'=>'114')); 
+					if ($logo->have_posts()) : $logo->the_post(); ?>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php the_field('site_logo'); ?>" alt="Logo"></a>
+				<?php endif;?>
+			</div>
+			<?php endif; ?>
+			<nav class="nav out">
+				<?php wp_nav_menu(
+					array(
+						'menu_class'      => 'nav-item',
+						'fallback_cb'     => 'false',
+						'menu_id'         => 'Main'
+					)
+				); ?>
+				<a href="#" id="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+			</nav>
+		</div>
 	</div>

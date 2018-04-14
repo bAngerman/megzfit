@@ -7,15 +7,6 @@
 get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
-<div class="banner">
-	<div class="banner-inner">
-    <?php $bannerContent = new WP_Query( array('p'=>'114')); 
-    if ($bannerContent->have_posts()) : $bannerContent->the_post(); ?>
-		  <div class="logo"><img src="<?php the_field('site_logo'); ?>" alt="Logo"></div>
-      <h1>BLOG</h1>
-    <?php endif;?>
-	</div>
-</div>
 <div class="container">
   <div class="row">
     <div class="sidebar-outer  col-12 col-md-4">
@@ -81,9 +72,11 @@ $container = get_theme_mod( 'understrap_container_type' );
                   $categories = get_the_category();
                   $separator = ', ';
                   $output = 'Category: ';
-                  if ( ! empty( $categories ) ) {
+                  if ( ! empty( $categories )  && !( count($categories) == 1 && $categories[0]->name == 'blog') ) {
                       foreach( $categories as $category ) {
+                        if ( $category->name !== 'blog' ) {
                           $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+                        }
                       }
                       echo trim( $output, $separator );
                   }

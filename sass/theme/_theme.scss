@@ -8,6 +8,7 @@ $white: #fff;
 $light-grey: #efefef;
 $mid-grey: #dbdddc;
 $teal: #76cfbf;
+$d-teal: #54a79a;
 $dark-grey: #7c7c7c;
 $black: #000;
 $carl: #ff7f50;
@@ -52,6 +53,16 @@ $t-fast: 100ms;
   @extend .d-flex;
   justify-content: center;
   align-items: center;
+}
+
+.justify-center-flex {
+  @extend .d-flex;
+  justify-content: center;
+}
+
+.space-between-flex {
+  @extend .d-flex;
+  justify-content: space-between;
 }
 
 
@@ -172,6 +183,17 @@ body {
     }
     #nav-toggle:hover {
       color: darken($white, 10);
+    }
+  }
+  &.archive, &.single {
+    .nav {
+      margin-bottom: 0;
+    }
+    .nav-logo {
+      padding: 10px;
+      img {
+        height: 30px;
+      } 
     }
   }
   @media only screen and (min-width: $bootstrapTablet) {
@@ -468,51 +490,48 @@ body {
 }
 
 .archive, .single {
+  .nav-container {
+    background-color: $teal;
+  }
   #page {
-   
+    background-color: $black;
+    color: $white;
   }
-  .banner {
-    
-    .banner-inner {
-      h1 {
-       
-      }
-      .logo {
-        
-      }
-      img {
-        
-      }
-    }
+  .blog-banner {
+    padding: 18px 0px;
   }
-  .blog-post {
-    
-    .post-image {
-      
+  .post-info {
+    text-align: center;
+    h2 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
     }
-    iframe {
-      margin-left: -18px;
-      margin-right: -18px;
-      width: calc(100% + 36px);
-      margin-bottom: -6px;
+    .date {
+      font-size: 1.4rem;
     }
-    .post-info {
-     
-      p {
-       
-      }
-      a {
+    .cat-link {
+      text-decoration: none;
+      color: $white;
+      padding-bottom: 5px;
+      border-bottom: 1px solid $teal;
+      margin-right: 1rem;
+      &:hover {
         color: $teal;
-        text-decoration: none;
-        &:hover {
-          color: $white;
-          text-decoration: none;
-
-        }
+      }
+      &:last-of-type {
+        margin-right: 0;
       }
     }
-    .read-more {
-      
+  }
+  
+  .blog-post {
+    p:empty:first-of-type {
+      height: 0;
+      margin: 0;
+    }
+    p:empty:first-of-type + p::first-letter {
+      font-size: 2rem;
+      font-weight: $medium;
     }
     .read-more:hover {
       color: $black;
@@ -522,7 +541,7 @@ body {
       box-shadow: none;
     }
   }
-  .sidebar {
+  .sidebar-inner {
     margin-top: 12px;
     margin-bottom: 12px;
     background-color: $teal;
@@ -530,6 +549,74 @@ body {
     select {
       width: 100%;
     }
+    &.blog-about {
+      background-image: linear-gradient(rgba(84,167,154, .8), rgba(84,167,154, .8)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/04/ocean-lg.png);
+      background-size: cover;
+      background-position: center center;
+      h2 {
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding-bottom: 12px;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+        padding: 12px 0px;
+        border: 1px transparent;
+        border-radius: 50%;
+      }
+      .social {
+        @extend .justify-center-flex;
+        a {
+          color: $white;
+          margin-right: 12px;
+          &:last-of-type {
+            margin: 0;
+          }
+          &:hover {
+            color: $black;
+            transition: all $t-medium ease-in-out;
+          }
+        }
+        
+        font-size: 20px;
+      }
+    }
+  }
+  .recents {
+    padding: 12px 0px;
+    text-align: center;
+    .date {
+      font-size: 1.2rem;
+    }
+    h2 {
+      padding: 12px 0px 3px 0px;
+      text-transform: uppercase;
+    }
+    h2 + hr {
+      height: 1px;
+      background-color: $teal;
+      max-width: 150px;
+      margin: 0 auto;
+      margin-bottom: 18px;
+    }
+    a {
+      display: block;
+      color: $white;
+      text-decoration: none;
+      h3 {
+        color: $white;
+        text-transform: uppercase;
+      }
+      &:hover {
+        h3 {
+          color: $teal;
+          transition: all $t-medium ease-in-out;
+        }
+      }
+    }
+
   }
   .sidebar-outer {
     position: relative;
@@ -537,6 +624,7 @@ body {
   @media only screen and (min-width: $bootstrapTablet) {
     .sidebar {
       position: sticky;
+      padding-bottom: 12px;
       top: 12px;
     }
   } 
