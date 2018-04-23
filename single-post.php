@@ -8,6 +8,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 ?>
 <div class="container">
   <?php if ( have_posts() ) : while ( have_posts()  ) : the_post(); ?>
+    <?php $pid = get_the_id(); ?>
     <?php if( in_category('blog')): ?>
       <div class="blog-banner">
         <?php if(get_field('featured_video')) {                  
@@ -43,13 +44,14 @@ $container = get_theme_mod( 'understrap_container_type' );
           <p class="date"><?php echo get_the_date('F j, Y'); ?></p>
         </div>
         <div class="row">
-          <div class="blog-post col-12 col-md-8">
+          <div class="blog-post col-12 col-lg-7">
             <p><?php the_field('content'); ?></p>
           </div>
+          <div class="col-12 col-lg-1"></div>
         <?php endif; ?>
       <?php endwhile; ?>
     <?php endif; ?>
-    <div class="sidebar-outer col-12 col-md-4">
+    <div class="sidebar-outer col-12 col-lg-4">
       <div class="sidebar">
         <div class="sidebar-inner blog-about">
           <?php
@@ -59,17 +61,75 @@ $container = get_theme_mod( 'understrap_container_type' );
               <h2><?php echo the_field('name'); ?></h2>
               <p><?php the_field('content'); ?></p>
             <?php endif; ?>
-            <div class="social">
-              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
-              <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
-              <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+            <div class="social-side">
+              <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+              <a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
+              <a href="#"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
             </div>
+        </div>
+        <div class="sidebar-inner recents">
+          <h4>Recent Posts</h4>
+          <hr />
+          <?php 
+          $args = array(
+          'category_name' => 'blog',
+          'posts_per_page' => '3',
+          'orderby'			=> 'date',
+          'order' => 'DESC',
+          'posts_type'		=> 'post',
+          'post_status'		=> 'publish',
+          'post__not_in' => array( $pid, ),
+          ); 
+          $recents = new WP_Query( $args );
+          if ($recents->have_posts()) : ?>
+            <?php while( $recents->have_posts() ) : $recents->the_post(); ?>
+            <div class="item d-flex">
+              <div class="col-1"></div>
+            <?php 
+            // get the video, if that doesnt exist, try to get the image.
+            if(get_field('featured_video')): ?>    
+                
+            <div class="col-4 post-image" style="background-image:url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
+              <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
+            </div>
+            
+            <?php elseif (get_field('featured_image')): ?>
+
+              <div class="col-4 post-image" style="background-image:url(<?php the_field('featured_image'); ?>)">
+                <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
+              </div>
+
+            <?php endif; ?>
+            <div class="post-content col-7">
+              <h3><a class="post-title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+              <p class="date"><?php echo get_the_date('F j, Y'); ?></p>
+              <?php 
+              $categories = get_the_category();
+              $separator = '  ';
+              $output = "";
+              if ( ! empty( $categories ) && !( count($categories) == 1 && $categories[0]->name == 'blog')  ) {
+                $output .= "<ul>";
+                  foreach( $categories as $category ) {
+                    if ( $category->name !== 'blog' ) {
+                      $output .= '<li>' . '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . '</li>';
+                    }
+                  }
+                  $output .= "</ul>";
+                  echo trim( $output, $separator );
+                  $output = "";
+              }
+              ?>
+            </div>
+            </a>
+          </div>
+          <?php endwhile; ?>
+        <?php endif; ?>
         </div>
       </div>
     </div>
   </div>
-  <div class="recents">
-    <h2>recent posts</h2>
+  <div class="related">
+    <h2>related posts</h2>
     <hr />
     <div class="row">
       <?php 
@@ -79,11 +139,12 @@ $container = get_theme_mod( 'understrap_container_type' );
         'orderby'			=> 'date',
         'order' => 'DESC',
         'posts_type'		=> 'post',
-        'post_status'		=> 'publish'
+        'post_status'		=> 'publish',
+        'post__not_in' => array( $pid, ),
         ); 
         $blogPosts = new WP_Query( $args );
         if ($blogPosts->have_posts()) : ?>
-          <?php while($blogPosts->have_posts()) : $blogPosts->the_post(); ?>
+          <?php while( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
             <div class="col-12 col-md-4">
               <a href="<?php the_permalink(); ?>">
             <?php 
@@ -91,8 +152,7 @@ $container = get_theme_mod( 'understrap_container_type' );
           if(get_field('featured_video')): ?>         
             <?php the_field('featured_video'); ?>
           <?php elseif (get_field('featured_image')): ?>
-            <div class="post-image">
-              <img src="<?php the_field('featured_image'); ?>" title="<?php the_title(); ?>" class="image-fluid" />
+            <div class="post-image" style="background-image:url(<?php the_field('featured_image'); ?>">
             </div>
           <?php endif; ?>
           <div class="post-content">

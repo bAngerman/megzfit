@@ -71,6 +71,8 @@ require get_template_directory() . '/inc/woocommerce.php';
 require get_template_directory() . '/inc/editor.php';
 
 
+$excludes = '3';
+
 // add something like this to functions.php
 function shorten_string($string, $wordsreturned)
 {
@@ -89,4 +91,19 @@ function shorten_string($string, $wordsreturned)
   }
   return $retval;
 }
+
+function custom_posts_per_page( $query ) {
+
+  if ( $query->is_archive() ) {
+
+    // check for current page number, if it doesnt exist set it as 1
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    set_query_var('paged', $paged);
+
+    // 6 Posts per page on archive.php
+    set_query_var('posts_per_page', 6);
+  }
+
+}
+  add_action( 'pre_get_posts', 'custom_posts_per_page' );
 

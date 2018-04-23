@@ -9,7 +9,7 @@ $light-grey: #efefef;
 $mid-grey: #dbdddc;
 $teal: #76cfbf;
 $d-teal: #54a79a;
-$dark-grey: #7c7c7c;
+$dark-grey: #4d4d4d;
 $black: #000;
 $carl: #ff7f50;
 
@@ -24,6 +24,7 @@ $meddon: Meddon, cursive;
 // font weights
 $regular: 400;
 $light: 300;
+$lightest: 200;
 $medium: 500;
 
 // breakpoints
@@ -34,7 +35,7 @@ $bp-desktop: 992px;
 // transition timings 
 $t-slow: 500ms;
 $t-medium: 300ms;
-$t-fast: 100ms;
+$t-fast: 300ms;
 
 // extends
 .d-flex {
@@ -65,6 +66,9 @@ $t-fast: 100ms;
   justify-content: space-between;
 }
 
+.teal {
+  color: $teal;
+}
 
 #page {
   background-color: $teal;
@@ -83,10 +87,10 @@ $t-fast: 100ms;
 
 // mixins 
 @mixin transition($timing) {
-  -webkit-transition: $timing all linear;
-  -moz-transition: $timing all linear;
-  -o-transition: $timing all linear;
-  transition: $timing all linear;
+  -webkit-transition: $timing all ease-in-out;
+  -moz-transition: $timing all ease-in-out;
+  -o-transition: $timing all ease-in-out;
+  transition: $timing all ease-in-out;
 }
 
 /*! GLOBAL STYLES */
@@ -98,6 +102,11 @@ html {
   p {
     font-size: 1rem;
     font-weight: $regular;
+  }
+}
+@media only screen and (min-width: $bp-desktop) {
+  html {
+    font-size: 18px;
   }
 }
 body {
@@ -121,39 +130,53 @@ body {
     font-weight: $light;
   }
   a {
-    @include transition($t-fast);
+    text-decoration: none;
   }
   a:hover {
-    @include transition($t-fast);
+    text-decoration: none;
   }
   iframe {
     width: 100%;
   }
-  .nav {
-    text-align: right;
-    position: fixed;
+  .nav-inner {
+    position: absolute;
     text-transform: uppercase;
     font-size: 1.2rem;
-    height: 50vh;
-    width: 50vw;
-    max-width: 100vw;
-    max-height: 100vh;
-    background-color: $teal;
     color: $white;
     font-family: $barlow;
     z-index: 100;
-    transition: left 0.4s;
-    overflow: hidden;
-    left: 50%;
+    transition: right 0.4s ease-in-out;
+    width: 100%;
+    right: 0px;
+    background-color: $teal;
     &.out {
-      left: 100%;
-      transition: left 0.4s;
+      right: -100%;
+      transition: right 0.4s ease-in-out;
     }
     .menu-main-container {
+      height: 100%;
       width: 100%;
+      margin: 60px 0px 36px 0px;
       display: flex;
-      align-items: center;
+      align-content: space-around;
       justify-content: center;
+    }
+    .social {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 36px;
+      a {
+        color: $white;
+        margin-right: 36px;
+        @include transition($t-fast);
+        &:last-of-type {
+          margin-right: 0px;
+        }
+        &:hover {
+          color: $black;
+          @include transition($t-fast);
+        }
+      }
     }
     ul {
       list-style-type: none;
@@ -165,30 +188,45 @@ body {
         padding: 10px 5px;
         color: $white;
         display: block;
+        @include transition($t-fast);
       }
       a:hover {
+        @include transition($t-fast);
         color: darken($white, 10);
-        text-decoration: none;
       }
     }
+    
+  }
+  #nav-toggle { 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 200;
+    height: 22px;
     .fa {
       color: $white;
     }
-    #nav-toggle { 
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 110;
-      height: 22px;
+  }
+  #nav-toggle:hover {
+    color: darken($white, 10);
+  }
+  &.single {
+    .nav {
+      background-color:$teal;
+      margin-bottom: 0;
     }
-    #nav-toggle:hover {
-      color: darken($white, 10);
+    
+  }
+  &.archive {
+    .nav {
+      background-color: transparent;
+      .nav-logo {
+        position: absolute;
+        left: 10px;
+      }
     }
   }
   &.archive, &.single {
-    .nav {
-      margin-bottom: 0;
-    }
     .nav-logo {
       padding: 10px;
       img {
@@ -197,27 +235,29 @@ body {
     }
   }
   @media only screen and (min-width: $bootstrapTablet) {
-    .nav {
+    .nav>.container {
       position: relative;
-      margin-bottom: -48.8px;
-      height: auto;
-      width: auto;
+    }
+    .nav-inner {
       background-color: transparent;
+      right: 10px !important;
+      width: auto;
       .menu-main-container {
         justify-content: flex-end;
-      }
-      &.out {
-        left: auto;
+        margin: 0;
+        margin-left: auto;
       }
       li {
         display: inline-block;
         margin-right: 10px;
       }
-
-      
-      #nav-toggle {
+     
+      .social {
         display: none;
       }
+    }
+    #nav-toggle {
+      display: none;
     }
   }
 }
@@ -234,11 +274,11 @@ body {
     justify-content: space-between;
     a {
       color: $black;
+      @include transition($t-fast);
     }
     a:hover, a:active {
       color: $white;
-      transition:all .3s ease-in-out;
-
+      @include transition($t-fast);
     }
   }
   .copy {
@@ -285,7 +325,7 @@ body {
   .about-me {
     background-color: $black;
     color: $teal;
-    text-align: center;
+    
     padding: 24px 24px;
 
     .about-me-inner {
@@ -293,14 +333,34 @@ body {
         text-transform: uppercase;
         letter-spacing: 1px;
         padding-bottom: 12px;
+        text-align: center;
       }
       img {
         padding: 12px 0px;
         border: 1px transparent;
         border-radius: 50%;
+        display: block;
       }
       p {
+        column-count: 1;
         color: $white;
+      }
+      .contact-link {
+        margin-top: 18px;
+        display: block;
+        background-color: $teal;
+        color: $white;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        text-align: center;
+        max-width: 250px;
+        font-family: $barlow;
+        text-transform: uppercase;
+      }
+      @media only screen and (min-width: $bp-tablet) {
+        p {
+          column-count: 2;
+        }
       }
     }
   }
@@ -311,14 +371,14 @@ body {
       font-family: $barlow;
       text-transform: uppercase;
       padding: 12px 20px 12px 20px;
+      @include transition($t-fast);
+      border-radius: 0 !important;
     }
     #sb_instagram .sbi_follow_btn a:hover{
       background-color: $white;
       color:$black;
-      transition:all .3s ease-in-out;
+      @include transition($t-fast);
       opacity: 1;
-
-
     }
   }
   .blog {
@@ -339,8 +399,9 @@ body {
         .post-content {
           background-color: $teal;
           position: relative;
-          padding: 6px 18px 36px 18px;
+          padding: 6px 18px 60px 18px;
           text-align: left;
+          min-height: 290px;
           h3 {
             color: $white;
             font-family: $barlow;
@@ -357,12 +418,12 @@ body {
             background-color: $white;
             color: $black; 
             border-radius: 0;
+            @include transition($t-fast);
           }
           a:hover {
             background-color: $black;
             color:$white;
-            transition:all .3s ease-in-out;
-            text-decoration: none;
+            @include transition($t-fast);
           }
           a:focus {
             box-shadow: none;
@@ -507,16 +568,19 @@ body {
       text-transform: uppercase;
     }
     .date {
+      font-weight: $lightest;
       font-size: 1.4rem;
     }
     .cat-link {
-      text-decoration: none;
+      font-weight: $lightest;
       color: $white;
       padding-bottom: 5px;
       border-bottom: 1px solid $teal;
       margin-right: 1rem;
+      @include transition($t-fast);
       &:hover {
         color: $teal;
+        @include transition($t-fast);
       }
       &:last-of-type {
         margin-right: 0;
@@ -535,17 +599,19 @@ body {
     }
     .read-more:hover {
       color: $black;
-      text-decoration: none;
     }
     .read-more:focus {
       box-shadow: none;
     }
   }
   .sidebar-inner {
+    p {
+      font-size: 24px;
+    }
     margin-top: 12px;
     margin-bottom: 12px;
     background-color: $teal;
-    padding: 12px;
+    padding: 12px 36px 24px 36px;
     select {
       width: 100%;
     }
@@ -558,6 +624,8 @@ body {
         text-transform: uppercase;
         letter-spacing: 1px;
         padding-bottom: 12px;
+        font-size: 48px;
+        line-height: 40px;
       }
       img {
         display: block;
@@ -566,25 +634,109 @@ body {
         border: 1px transparent;
         border-radius: 50%;
       }
-      .social {
+      .social-side {
         @extend .justify-center-flex;
         a {
           color: $white;
-          margin-right: 12px;
+          margin-right: 36px;
+          @include transition($t-fast);
           &:last-of-type {
             margin: 0;
           }
           &:hover {
             color: $black;
-            transition: all $t-medium ease-in-out;
+            @include transition($t-fast);
           }
         }
-        
         font-size: 20px;
       }
     }
   }
+  .anchor-cover {
+    margin-left: -15px;
+    margin-right: -15px;
+    display: block;
+    height: 100%;
+  }
   .recents {
+    p {
+      font-size: 1rem;
+    }
+    background-color: $d-teal;
+    margin-top: 60px;
+    padding: 12px 0px 24px 0px;
+    color: $white;
+    .item {
+      margin-bottom: 12px;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    h4 {
+      padding: 12px 0px 3px 0px;
+      font-weight: $lightest;
+      font-size: 1.1rem;
+      text-align: center;
+      font-weight: $lightest;
+    }
+    h4 + hr {
+      height: 1px;
+      background-color: $teal;
+      max-width: 100px;
+      margin: 0 auto;
+      margin-bottom: 32px;
+    }
+    .post-image {
+      align-self: center;
+      height: 115px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    .post-title {
+      font-size: 20px;
+      text-transform: uppercase;
+      color: $dark-grey;
+      @include transition($t-fast);
+      &:hover {
+        @include transition($t-fast);
+        color: lighten($dark-grey, 5);
+      }
+    }
+    ul {
+      list-style-type: none;
+      clear: both;
+      margin: 0;
+      padding: 0;
+      li {
+        a {
+          color: $white;
+          &:hover {
+            color: $white;
+          }
+        }
+        font-size: 0.8rem;
+        float: left;
+        margin-right: 6px;
+        margin-bottom: 3px;
+        border: 1px solid $white;
+        padding: 2px;
+        background-color: transparent;
+        @include transition($t-fast);
+
+        &:hover {
+          @include transition($t-fast);
+          background-color: $dark-grey;
+          border-color: $dark-grey;
+        }
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+    }
+    
+  }
+  .related {
     padding: 12px 0px;
     text-align: center;
     .date {
@@ -601,40 +753,119 @@ body {
       margin: 0 auto;
       margin-bottom: 18px;
     }
+    .post-image {
+      height: 250px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
     a {
       display: block;
       color: $white;
-      text-decoration: none;
-      h3 {
-        color: $white;
-        text-transform: uppercase;
-      }
+      text-transform: uppercase;
+      @include transition($t-fast);
       &:hover {
-        h3 {
-          color: $teal;
-          transition: all $t-medium ease-in-out;
-        }
+        @include transition($t-fast);
+        color: $teal;
       }
     }
+  }
+}
 
+.archive {
+  .banner {
+    @extend .d-center;
+    min-height: 350px;
+    background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-600px.jpg);
+    background-size: cover;
+    background-position: center center;
+  }
+  h1 {
+    font-size: 2.2rem;
+    margin: 2rem 0;
+    margin-left: 15px;
   }
   .sidebar-outer {
-    position: relative;
+    margin-top: 90px;
   }
-  @media only screen and (min-width: $bootstrapTablet) {
-    .sidebar {
-      position: sticky;
-      padding-bottom: 12px;
-      top: 12px;
+  .archive-content {
+
+    .archive-item {
+      min-height: auto;
+      margin-bottom: 2rem;
+      .post-image {
+        align-self: center;
+        height: 210px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+
+      .blog-title {
+        color: $white;
+        @include transition($t-fast);
+        &:hover {
+          color: $teal;
+          @include transition($t-fast);
+
+        }
+      }
+      
+      .archive-info {
+        
+        position: relative;
+        p {
+          font-size: .8rem;
+          margin-bottom: 0.5rem;
+        }
+        h4 {
+          text-transform: uppercase;
+          font-size: 1.2rem;
+          letter-spacing: 1px;
+          
+        }
+        .cat-link {
+          font-weight: 200;
+          color: #fff;
+          padding-bottom: 5px;
+          border-bottom: 1px solid #76cfbf;
+          margin-right: 1rem;
+          margin-bottom: 0.4rem;
+          @include transition($t-fast);
+          &:hover {
+            color: $teal;
+            @include transition($t-fast);
+
+          }
+        }
+        .read-more {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          font-size: .8rem;
+          letter-spacing: 1px;
+          font-family: $barlow;
+          text-transform: uppercase;
+          color: $white;
+          @include transition($t-fast);
+          &:hover {
+            color: $teal;
+            @include transition($t-fast);
+          }
+        }
+        
+      }
     }
-  } 
+  }
+
+
 }
 
 /*! TABLET */
 @media only screen and (min-width: $bp-tablet) {
   .home {
     .banner {
-      min-height: 500px;
+      min-height: 400px;
       background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png);
     }
     .about-me{
@@ -652,9 +883,9 @@ body {
       }
     } //close blog
   }
-  .single, .archive {
+  .archive {
     .banner {
-      min-height: 500px;
+      min-height: 400px;
       background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-992px.png);
     }
   }
@@ -670,7 +901,7 @@ body {
 @media only screen and (min-width: $bp-desktop) {
   .home {
     .banner {
-      min-height: 700px;
+      min-height: 500px;
       background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png);
     }
     .about-me{
@@ -700,9 +931,9 @@ body {
     }
   }
   
-  .archive, .single {
+  .archive {
     .banner {
-      min-height: 700px;
+      min-height: 500px;
       background-image: linear-gradient(rgba(118, 207, 191, .6), rgba(118, 207, 191, .6)), url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/02/banner-1400px.png);
     }
   }

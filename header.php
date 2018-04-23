@@ -26,7 +26,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <body <?php body_class(); ?>>
 
 <div class="hfeed site" id="page">
-	<div class="nav-container">
+	<div class="nav">
 		<div class="container <?php if( is_archive() || is_single() ) { echo "space-between-flex"; }?>">
 			<?php if( is_archive() || is_single() ) :
 			// logo on nav for non front-page posts ?>
@@ -37,7 +37,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php endif;?>
 			</div>
 			<?php endif; ?>
-			<nav class="nav out">
+			<nav class="nav-inner out">
 				<?php wp_nav_menu(
 					array(
 						'menu_class'      => 'nav-item',
@@ -45,7 +45,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 						'menu_id'         => 'Main'
 					)
 				); ?>
-				<a href="#" id="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+				<div class="social">
+					<a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+					<a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
+					<a href="#"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+				</div>
 			</nav>
+			<a href="#" id="nav-toggle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+			
 		</div>
 	</div>

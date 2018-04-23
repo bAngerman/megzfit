@@ -19,13 +19,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="about-me">
   <div class="about-me-inner <?php echo esc_attr( $container ); ?>">
     <div class="row">
-      <div class="col-12 col-md-8 mx-auto">
+      <div class="col-12 col-md-10 mx-auto">
         <?php
           $aboutMe = new WP_Query( array('p'=>'22') );
           if ($aboutMe->have_posts()) : $aboutMe->the_post(); ?>
             <h2><?php echo the_field('about'); ?></h2>
-            <img src="<?php the_field('headshot_image'); ?>" alt="headshot">
+            <img class="mx-auto" src="<?php the_field('headshot_image'); ?>" alt="headshot">
             <p><?php the_field('about_content'); ?></p>
+            <a class="contact-link mx-auto" href="#" id="contact-form-link">Contact Me</a>
           <?php endif; ?>
         </div>
       </div>
@@ -53,14 +54,14 @@ $container = get_theme_mod( 'understrap_container_type' );
         if ($blogPosts->have_posts()) : ?>
           <div class="row">
           <?php while($blogPosts->have_posts()) : $blogPosts->the_post(); ?>
-            <div class="blog-post col-12 col-md-6">
+            <div class="blog-post col-12 col-md-6 row-eq-height">
               <?php 
                 // get the video, if that doesnt exist, try to get the image.
                 if(get_field('featured_video')): ?>         
                   <?php the_field('featured_video'); ?>
                 <?php elseif (get_field('featured_image')): ?>
-                  <div class="post-image">
-                    <img src="<?php the_field('featured_image'); ?>" title="<?php the_title(); ?>" class="image-fluid" />
+                  <div class="post-image" style="background-image:url(<?php the_field('featured_image'); ?> ); height: 315px; background-size: cover;
+                  background-repeat: no-repeat; background-position: center center;" >
                   </div>
                 <?php endif; ?>
               <div class="post-content">
