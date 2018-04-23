@@ -20,11 +20,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 		</div>
 	</div>
 	<div class="<?php echo esc_attr( $container ); ?>">
+
+		<?php
+		$socialMedia = new WP_Query( array('p'=>'219') );
+		if ($socialMedia->have_posts()) : $socialMedia->the_post(); ?>
 		<div class="social">
-			<a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
-			<a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
-			<a href="#"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+			<a href="<?php the_field('instagram'); ?>"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+			<a href="<?php the_field('youtube'); ?>"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
+			<a href="<?php the_field('facebook'); ?>"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
 		</div>
+		<?php endif; ?>
 		<div class="copy">
 			<p><?php echo date('Y') ?> copyright megzfit</p>
 		</div>

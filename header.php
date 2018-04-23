@@ -46,9 +46,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 					)
 				); ?>
 				<div class="social">
-					<a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
-					<a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
-					<a href="#"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+				<?php
+          $socialMedia = new WP_Query( array('p'=>'219') );
+          if ($socialMedia->have_posts()) : $socialMedia->the_post(); ?>
+					<a href="<?php the_field('instagram'); ?>"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+					<a href="<?php the_field('youtube'); ?>"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
+					<a href="<?php the_field('facebook'); ?>"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+				<?php endif; ?>
 				</div>
 			</nav>
 			<a href="#" id="nav-toggle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>

@@ -49,7 +49,7 @@ $container = get_theme_mod( 'understrap_container_type' );
           </div>
           <div class="col-12 col-lg-1"></div>
         <?php endif; ?>
-      <?php endwhile; ?>
+      <?php $current_cats = get_the_category(); endwhile; ?>
     <?php endif; ?>
     <div class="sidebar-outer col-12 col-lg-4">
       <div class="sidebar">
@@ -61,11 +61,15 @@ $container = get_theme_mod( 'understrap_container_type' );
               <h2><?php echo the_field('name'); ?></h2>
               <p><?php the_field('content'); ?></p>
             <?php endif; ?>
+            <?php 
+            $socialMedia = new WP_Query( array('p'=>'219') );
+		        if ($socialMedia->have_posts()) : $socialMedia->the_post(); ?>
             <div class="social-side">
-              <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
-              <a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
-              <a href="#"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+              <a href="<?php the_field('instagram'); ?>"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+              <a href="<?php the_field('youtube'); ?>"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
+              <a href="<?php the_field('facebook'); ?>"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
             </div>
+            <?php endif; ?>
         </div>
         <div class="sidebar-inner recents">
           <h4>Recent Posts</h4>
@@ -89,7 +93,7 @@ $container = get_theme_mod( 'understrap_container_type' );
             // get the video, if that doesnt exist, try to get the image.
             if(get_field('featured_video')): ?>    
                 
-            <div class="col-4 post-image" style="background-image:url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
+            <div class="col-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
               <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
             </div>
             
@@ -99,6 +103,10 @@ $container = get_theme_mod( 'understrap_container_type' );
                 <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
               </div>
 
+            <?php else: ?>
+            <div class="col-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
+              <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
+            </div>
             <?php endif; ?>
             <div class="post-content col-7">
               <h3><a class="post-title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -111,7 +119,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 $output .= "<ul>";
                   foreach( $categories as $category ) {
                     if ( $category->name !== 'blog' ) {
-                      $output .= '<li>' . '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . '</li>';
+                      $output .= '<li>' . '<a class="cat-link-side" href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . '</li>';
                     }
                   }
                   $output .= "</ul>";
@@ -129,12 +137,18 @@ $container = get_theme_mod( 'understrap_container_type' );
     </div>
   </div>
   <div class="related">
-    <h2>related posts</h2>
-    <hr />
-    <div class="row">
+    
       <?php 
+        // print_r($current_cats);
+        $related_cats = array();
+        foreach($current_cats as $cat) {
+          if ( $cat->cat_name != 'blog' ) {
+            array_push( $related_cats, $cat->cat_name );
+          }
+        }
+        print_r($related_cats);
         $args = array(
-        'category_name' => 'blog',
+        'cat' => $related_cats,
         'posts_per_page' => '3',
         'orderby'			=> 'date',
         'order' => 'DESC',
@@ -144,6 +158,9 @@ $container = get_theme_mod( 'understrap_container_type' );
         ); 
         $blogPosts = new WP_Query( $args );
         if ($blogPosts->have_posts()) : ?>
+        <h2>related posts</h2>
+        <hr />
+        <div class="row">
           <?php while( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
             <div class="col-12 col-md-4">
               <a href="<?php the_permalink(); ?>">

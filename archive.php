@@ -16,12 +16,16 @@ $container = get_theme_mod( 'understrap_container_type' );
       <?php if ( have_posts() ) : while ( have_posts()  ) : the_post(); ?>
         <?php if( in_category('blog') ): ?>
           <div class="archive-item d-flex">
-            <?php  if(get_field('featured_video')): ?>    
-              <div class="col-4 post-image" style="background-image:url(http://megzfit.web.dmitcapstone.ca/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
+            <?php if(get_field('featured_video')): ?>    
+              <div class="col-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
                 <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
               </div>
             <?php elseif (get_field('featured_image')): ?>
               <div class="col-4 post-image" style="background-image:url(<?php the_field('featured_image'); ?>)">
+                <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
+              </div>
+            <?php else : ?>
+              <div class="col-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
                 <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
               </div>
             <?php endif; ?> 
@@ -68,11 +72,15 @@ $container = get_theme_mod( 'understrap_container_type' );
               <h2><?php echo the_field('name'); ?></h2>
               <p><?php the_field('content'); ?></p>
             <?php endif; ?>
+            <?php 
+            $socialMedia = new WP_Query( array('p'=>'219') );
+		        if ($socialMedia->have_posts()) : $socialMedia->the_post(); ?>
             <div class="social-side">
-              <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
-              <a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
-              <a href="#"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+              <a href="<?php the_field('instagram'); ?>"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+              <a href="<?php the_field('youtube'); ?>"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i><span class="sr-only">Youtube</span></a>
+              <a href="<?php the_field('facbook'); ?>"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
             </div>
+              <?php endif;?>
         </div>
         <div class="sidebar-inner recents">
           <h4>Sort Blog by: </h4>

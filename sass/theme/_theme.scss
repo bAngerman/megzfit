@@ -402,6 +402,7 @@ body {
           padding: 6px 18px 60px 18px;
           text-align: left;
           min-height: 290px;
+          
           h3 {
             color: $white;
             font-family: $barlow;
@@ -551,6 +552,9 @@ body {
 }
 
 .archive, .single {
+  .cat-link-side {
+    padding: 4px 8px 4px 8px;
+  }
   .nav-container {
     background-color: $teal;
   }
@@ -560,6 +564,12 @@ body {
   }
   .blog-banner {
     padding: 18px 0px;
+    .post-image {
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
   }
   .post-info {
     text-align: center;
@@ -634,6 +644,7 @@ body {
         border: 1px transparent;
         border-radius: 50%;
       }
+      
       .social-side {
         @extend .justify-center-flex;
         a {
@@ -846,10 +857,10 @@ body {
           letter-spacing: 1px;
           font-family: $barlow;
           text-transform: uppercase;
-          color: $white;
+          color: $teal;
           @include transition($t-fast);
           &:hover {
-            color: $teal;
+            color: $white;
             @include transition($t-fast);
           }
         }

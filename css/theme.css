@@ -7626,6 +7626,9 @@ body {
 .error404 .four-oh-four {
   min-height: 50vh; }
 
+.archive .cat-link-side, .single .cat-link-side {
+  padding: 4px 8px 4px 8px; }
+
 .archive .nav-container, .single .nav-container {
   background-color: #76cfbf; }
 
@@ -7635,6 +7638,9 @@ body {
 
 .archive .blog-banner, .single .blog-banner {
   padding: 18px 0px; }
+  .archive .blog-banner .post-image img, .single .blog-banner .post-image img {
+    display: block;
+    margin: 0 auto; }
 
 .archive .post-info, .single .post-info {
   text-align: center; }
@@ -7904,13 +7910,13 @@ body {
       letter-spacing: 1px;
       font-family: "Barlow Condensed", Helvetica, sans-serif;
       text-transform: uppercase;
-      color: #fff;
+      color: #76cfbf;
       -webkit-transition: 300ms all ease-in-out;
       -moz-transition: 300ms all ease-in-out;
       -o-transition: 300ms all ease-in-out;
       transition: 300ms all ease-in-out; }
       .archive .archive-content .archive-item .archive-info .read-more:hover {
-        color: #76cfbf;
+        color: #fff;
         -webkit-transition: 300ms all ease-in-out;
         -moz-transition: 300ms all ease-in-out;
         -o-transition: 300ms all ease-in-out;
