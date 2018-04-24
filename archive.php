@@ -15,22 +15,22 @@ $container = get_theme_mod( 'understrap_container_type' );
       <h1>BLOG</h1>
       <?php if ( have_posts() ) : while ( have_posts()  ) : the_post(); ?>
         <?php if( in_category('blog') ): ?>
-          <div class="archive-item d-flex">
+          <div class="archive-item row">
             <?php if(get_field('featured_video')): ?>    
-              <div class="col-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
+              <div class="col-sm-12 col-md-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
                 <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
               </div>
             <?php elseif (get_field('featured_image')): ?>
-              <div class="col-4 post-image" style="background-image:url(<?php the_field('featured_image'); ?>)">
+              <div class="col-sm-12 col-md-4 post-image" style="background-image:url(<?php the_field('featured_image'); ?>)">
                 <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
               </div>
             <?php else : ?>
-              <div class="col-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
+              <div class="col-sm-12 col-md-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
                 <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
               </div>
             <?php endif; ?> 
-            <div class="col-8 archive-info">
-            <p>
+            <div class="col-sm-12 col-md-8 archive-info">
+            <p class="cat-links">
               <?php 
                 $categories = get_the_category();
                 $separator = '';

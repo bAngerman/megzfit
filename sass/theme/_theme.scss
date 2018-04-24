@@ -810,6 +810,10 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
+        margin-bottom: 12px;
+        @media only screen and (min-width: $bootstrapTablet) {
+          margin-bottom: 0px;
+        }
       }
 
       .blog-title {
@@ -834,6 +838,13 @@ body {
           font-size: 1.2rem;
           letter-spacing: 1px;
           
+        }
+        .cat-links {
+          text-align: center;
+          
+        }
+        .blog-title {
+          text-align: center;
         }
         .cat-link {
           font-weight: 200;
@@ -864,7 +875,14 @@ body {
             @include transition($t-fast);
           }
         }
-        
+        @media only screen and (min-width: $bootstrapTablet) {
+          .cat-links {
+            text-align: initial;
+          }
+          .blog-title {
+            text-align: initial;
+          }
+        }
       }
     }
   }

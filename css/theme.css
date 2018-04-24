@@ -7863,7 +7863,11 @@ body {
     height: 210px;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center; }
+    background-position: center center;
+    margin-bottom: 12px; }
+    @media only screen and (min-width: 768px) {
+      .archive .archive-content .archive-item .post-image {
+        margin-bottom: 0px; } }
   .archive .archive-content .archive-item .blog-title {
     color: #fff;
     -webkit-transition: 300ms all ease-in-out;
@@ -7885,6 +7889,10 @@ body {
       text-transform: uppercase;
       font-size: 1.2rem;
       letter-spacing: 1px; }
+    .archive .archive-content .archive-item .archive-info .cat-links {
+      text-align: center; }
+    .archive .archive-content .archive-item .archive-info .blog-title {
+      text-align: center; }
     .archive .archive-content .archive-item .archive-info .cat-link {
       font-weight: 200;
       color: #fff;
@@ -7921,6 +7929,11 @@ body {
         -moz-transition: 300ms all ease-in-out;
         -o-transition: 300ms all ease-in-out;
         transition: 300ms all ease-in-out; }
+    @media only screen and (min-width: 768px) {
+      .archive .archive-content .archive-item .archive-info .cat-links {
+        text-align: initial; }
+      .archive .archive-content .archive-item .archive-info .blog-title {
+        text-align: initial; } }
 
 /*! TABLET */
 @media only screen and (min-width: 600px) {

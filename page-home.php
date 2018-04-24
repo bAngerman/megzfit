@@ -63,6 +63,10 @@ $container = get_theme_mod( 'understrap_container_type' );
                   <div class="post-image" style="background-image:url(<?php the_field('featured_image'); ?> ); height: 315px; background-size: cover;
                   background-repeat: no-repeat; background-position: center center;" >
                   </div>
+                <?php else: ?>
+                 <div class="post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg); height: 315px; background-size: cover;
+                  background-repeat: no-repeat; background-position: center center;" >
+                  </div>
                 <?php endif; ?>
               <div class="post-content">
                 <h3><?php the_title(); ?></h3>

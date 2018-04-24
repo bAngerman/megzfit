@@ -140,15 +140,17 @@ $container = get_theme_mod( 'understrap_container_type' );
     
       <?php 
         // print_r($current_cats);
-        $related_cats = array();
+        $related_cats = '';
         foreach($current_cats as $cat) {
           if ( $cat->cat_name != 'blog' ) {
-            array_push( $related_cats, $cat->cat_name );
+            $related_cats = $related_cats . $cat->cat_name;
+            if ($cat !== end($current_cats)) {
+              $related_cats = $related_cats . ', ';
+            }
           }
         }
-        print_r($related_cats);
         $args = array(
-        'cat' => $related_cats,
+        'category_name' => $related_cats,
         'posts_per_page' => '3',
         'orderby'			=> 'date',
         'order' => 'DESC',
@@ -170,6 +172,9 @@ $container = get_theme_mod( 'understrap_container_type' );
             <?php the_field('featured_video'); ?>
           <?php elseif (get_field('featured_image')): ?>
             <div class="post-image" style="background-image:url(<?php the_field('featured_image'); ?>">
+            </div>
+          <?php else: ?>
+           <div class="post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg">
             </div>
           <?php endif; ?>
           <div class="post-content">
