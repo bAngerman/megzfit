@@ -26,7 +26,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <h2><?php echo the_field('about'); ?></h2>
             <img class="mx-auto" src="<?php the_field('headshot_image'); ?>" alt="headshot">
             <p><?php the_field('about_content'); ?></p>
-            <a class="contact-link mx-auto" href="#" id="contact-form-link">Contact Me</a>
+            <div class="contact-links">
+              <a class="contact-link" href="#" id="contact-form-link">Contact Me</a>
+              <a class="contact-link" href="http://www.4pointshealth.com/">4 Points Health</a>
+            </div>
           <?php endif; ?>
         </div>
       </div>

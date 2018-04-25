@@ -7468,17 +7468,35 @@ body {
     .home .about-me .about-me-inner p {
       column-count: 1;
       color: #fff; }
-    .home .about-me .about-me-inner .contact-link {
-      margin-top: 18px;
-      display: block;
-      background-color: #76cfbf;
-      color: #fff;
-      padding: .375rem .75rem;
-      font-size: 1rem;
-      text-align: center;
-      max-width: 250px;
-      font-family: "Barlow Condensed", Helvetica, sans-serif;
-      text-transform: uppercase; }
+    .home .about-me .about-me-inner .contact-links {
+      display: flex;
+      justify-content: center; }
+      .home .about-me .about-me-inner .contact-links .contact-link {
+        margin-right: 36px;
+        margin-top: 18px;
+        display: block;
+        background-color: #76cfbf;
+        color: #fff;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        text-align: center;
+        min-width: 200px;
+        max-width: 250px;
+        font-family: "Barlow Condensed", Helvetica, sans-serif;
+        text-transform: uppercase;
+        -webkit-transition: 300ms all ease-in-out;
+        -moz-transition: 300ms all ease-in-out;
+        -o-transition: 300ms all ease-in-out;
+        transition: 300ms all ease-in-out; }
+        .home .about-me .about-me-inner .contact-links .contact-link:last-of-type {
+          margin-right: 0px; }
+        .home .about-me .about-me-inner .contact-links .contact-link:hover {
+          -webkit-transition: 300ms all ease-in-out;
+          -moz-transition: 300ms all ease-in-out;
+          -o-transition: 300ms all ease-in-out;
+          transition: 300ms all ease-in-out;
+          color: #76cfbf;
+          background-color: #fff; }
     @media only screen and (min-width: 600px) {
       .home .about-me .about-me-inner p {
         column-count: 2; } }
@@ -7854,6 +7872,38 @@ body {
 
 .archive .sidebar-outer {
   margin-top: 90px; }
+
+.archive #archive_monthly {
+  max-width: 200px;
+  display: block;
+  margin: 0 auto;
+  font-family: "Barlow Condensed", Helvetica, sans-serif; }
+  .archive #archive_monthly option {
+    font-family: "Barlow Condensed", Helvetica, sans-serif; }
+
+.archive .archive-content .pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0; }
+
+.archive .archive-content .pagination-link {
+  display: block; }
+  .archive .archive-content .pagination-link a {
+    color: #76cfbf;
+    -webkit-transition: 300ms all ease-in-out;
+    -moz-transition: 300ms all ease-in-out;
+    -o-transition: 300ms all ease-in-out;
+    transition: 300ms all ease-in-out;
+    font-family: "Barlow Condensed", Helvetica, sans-serif;
+    text-transform: uppercase; }
+    .archive .archive-content .pagination-link a:hover {
+      color: #fff;
+      -webkit-transition: 300ms all ease-in-out;
+      -moz-transition: 300ms all ease-in-out;
+      -o-transition: 300ms all ease-in-out;
+      transition: 300ms all ease-in-out; }
+  .archive .archive-content .pagination-link.prev-page {
+    margin-right: auto; }
 
 .archive .archive-content .archive-item {
   min-height: auto;

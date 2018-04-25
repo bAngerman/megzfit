@@ -345,18 +345,34 @@ body {
         column-count: 1;
         color: $white;
       }
-      .contact-link {
-        margin-top: 18px;
-        display: block;
-        background-color: $teal;
-        color: $white;
-        padding: .375rem .75rem;
-        font-size: 1rem;
-        text-align: center;
-        max-width: 250px;
-        font-family: $barlow;
-        text-transform: uppercase;
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        .contact-link {
+          margin-right: 36px;
+          margin-top: 18px;
+          display: block;
+          background-color: $teal;
+          color: $white;
+          padding: .375rem .75rem;
+          font-size: 1rem;
+          text-align: center;
+          min-width: 200px;
+          max-width: 250px;
+          font-family: $barlow;
+          text-transform: uppercase;
+          @include transition($t-fast);
+          &:last-of-type {
+            margin-right: 0px;
+          }
+          &:hover {
+            @include transition($t-fast);
+            color: $teal;
+            background-color: $white;
+          }
+        }
       }
+      
       @media only screen and (min-width: $bp-tablet) {
         p {
           column-count: 2;
@@ -799,8 +815,39 @@ body {
   .sidebar-outer {
     margin-top: 90px;
   }
+  #archive_monthly {
+    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+    font-family: $barlow;
+    option {
+      font-family: $barlow;
+    }
+  }
   .archive-content {
-
+    .pagination-container {
+      display: flex;
+      justify-content: flex-end;
+      margin: 1rem 0;
+    }
+    .pagination-link {
+      display: block;
+      a {
+        color: $teal;
+        @include transition($t-fast);
+        font-family: $barlow;
+        text-transform: uppercase;
+        &:hover {
+          color: $white;
+          @include transition($t-fast);
+        }
+      }
+      &.prev-page {
+        margin-right: auto;
+      }
+      &.next-page {
+      }
+    }
     .archive-item {
       min-height: auto;
       margin-bottom: 2rem;

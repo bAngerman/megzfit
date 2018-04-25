@@ -17,7 +17,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         <?php if( in_category('blog') ): ?>
           <div class="archive-item row">
             <?php if(get_field('featured_video')): ?>    
-              <div class="col-sm-12 col-md-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
+              <div class="col-sm-12 col-md-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/large-megzfit-placeholder.jpg)">
                 <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
               </div>
             <?php elseif (get_field('featured_image')): ?>
@@ -25,7 +25,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
               </div>
             <?php else : ?>
-              <div class="col-sm-12 col-md-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/blog-post-alt-img.jpg)">
+              <div class="col-sm-12 col-md-4 post-image" style="background-image:url(<?php echo get_site_url(); ?>/wp-content/uploads/2018/04/large-megzfit-placeholder.jpg)">
                 <a class="anchor-cover" href="<?php the_permalink(); ?>"></a> 
               </div>
             <?php endif; ?> 
@@ -54,8 +54,10 @@ $container = get_theme_mod( 'understrap_container_type' );
           </div>
         <?php endif; ?>
       <?php endwhile; ?>
-      <?php next_posts_link(); ?>
-      <?php previous_posts_link(); ?>
+      <div class="pagination-container">
+        <div class="pagination-link prev-page"><?php previous_posts_link('previous posts'); ?></div>
+        <div class="pagination-link next-page"><?php next_posts_link('more posts'); ?></div>
+      </div>
       <?php else : ?>
       <p>No posts found :(</p>
       <?php endif; ?>

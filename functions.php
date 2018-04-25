@@ -101,7 +101,7 @@ function custom_posts_per_page( $query ) {
     set_query_var('paged', $paged);
 
     // 6 Posts per page on archive.php
-    set_query_var('posts_per_page', 6);
+    set_query_var('posts_per_page', 5);
   }
 
 }
